@@ -1,0 +1,84 @@
+---
+title: "Discriminatory Listings"
+author: "Hadrien Dykiel"
+date: "January 3, 2017"
+output: html_document
+---
+#Overview
+This script lays out the basic framework of how we might process listing data to identify discriminatory listings. 
+
+#Sample Data
+Until we have figured out a way of scraping Craigslist data legally, I have manually added some listing descriptions below.
+
+```{r}
+#Sample data
+listings <- c("ID: 2297341
+Rent: $1995 / Month
+Broker Fee: No Fee
+Available Date: NOW
+Beds: 1
+Baths: 1
+Pet: Pet Friendly
+",
+"Welcome, a new concept in boutique luxury rental living. Located right in the middle of the exciting and bustling Davis Square, Porter Square, and Alewife areas, yet nestled in a quiet tree-lined residential neighborhood. Everything is designed to enrich quality of life. It's innovative, stylish, contemporary living. It's living better. Indulge with private on-site parking, residents' fitness center, community lawn and grilling areas, organic food delivery, concierge services, courtesy bicycles, courtesy conference room, and your luxuriously appointed apartment home.",
+"Walk to NorthEastern University! Berklee College of Music, the Green Line and more!",
+"Not deleaded",
+"- brand new construction
+- parking for rent, $150 / month
+- deck
+- 2 full baths
+- laundry in unit
+- walk down Parker St to Northeastern / Wentworth / MCHPS
+- take a left on Tremont to walk to Longwood Med / Brigham Circle
+- Green and Orange line stations easy walking distance
+- lease to 8/31/17 (renewable)"
+)
+
+#save to data frame
+df <- data.frame(listings)
+
+#observed status (used to train model)
+df$discriminatory <- c("no","no","discriminatory","discriminatory", "no")
+
+```
+
+#Discriminatory Flagging Model
+In this section, we establish the rules and logic to identify discriminatory listings. To start, we use simple rules such as does the description contain any discriminatory phrases? In the future, we may consider leveraging more advanced modeled techniques to improve the accuracy of our model.
+```{r}
+#
+df$discriminatory.pred <- "no"
+for (i in 1: length(listings)) {
+    if(grepl("Not deleaded",listings[i])){
+        # print(listings[i])
+        df$discriminatory.pred[i] <- "discriminatory"
+        
+    }
+}
+```
+
+#Evaluate Performance of Model
+We then evaludate the performance of our model to verify how accurately our current rules/logic can identify discriminatory listings. Model performance can be evaluated using a confusion matrix:
+
+```{r}
+conf <- table(df$discriminatory, df$discriminatory.pred)
+
+TP <- conf[1, 1] #true positives
+FN <- conf[1, 2] #false negatives
+FP <- conf[2,1] #false positives
+TN <- conf[2,2] #true negatives
+
+# Calculate and print the accuracy: acc
+(acc <- (TP+TN)/(TP+FN+FP+TN))
+
+# Calculate and print out the precision: prec
+(prec <- (TP)/(TP+FP))
+
+
+# Calculate and print out the recall: rec
+(rec <- TP/(TP+FN))
+
+
+```
+
+
+

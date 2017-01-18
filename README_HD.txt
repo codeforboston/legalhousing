@@ -8,4 +8,6 @@ Overview
 
 Files
 ------
-flagModel.RMD --> script that processes data to identify discriminatory listings.
+web-scraper/listingURLs.R --> script that retrieves craigslist rental listing URLs
+
+classification-model/flagModel.RMD --> script that processes data to identify discriminatory listings.

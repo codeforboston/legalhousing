@@ -1,4 +1,5 @@
 class ListingsController < ApplicationController
+skip_before_filter :verify_authenticity_token
 
   def index
     @listings = Listing.all
@@ -15,6 +16,11 @@ class ListingsController < ApplicationController
   def update
     set_listing
     set_listing.update(listing_params)
+  end
+
+  def create
+    @listing = Listing.new(listing_params)
+    @listing.save
   end
 
   private

@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  resources :listings, only: [:show, :edit, :update, :index]
+  resources :listings
   # get 'listings/show'
   # get 'listings/edit'
   # get 'listings/update'

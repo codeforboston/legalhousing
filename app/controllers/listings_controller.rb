@@ -5,56 +5,41 @@ class ListingsController < ApplicationController
     @listings = Listing.all
     respond_to do |format|
       format.html
-      format.json {render json: @listings}
+      format.json {render json: @listings.to_json}
     end
   end
 
   def show
     set_listing
-    respond_to do |format|
-      format.html
-      format.json {render json: @listing}
-    end
+    render_formats
+    
   end
 
   def edit
     set_listing
-    respond_to do |format|
-      format.html
-      format.json {render json: @listing}
-    end
+    render_formats
   end
 
   def update
     set_listing
     set_listing.update(listing_params)
-    respond_to do |format|
-      format.html
-      format.json {render json: @listing}
-    end
+    render_formats
   end
 
   def create
     @listing = Listing.new(listing_params)
     @listing.save
-    respond_to do |format|
-      format.html
-      format.json {render json: @listing}
-    end
+    render_formats
   end
 
   def discriminatory
     @listings = Listing.discriminatory
-    respond_to do |format|
-      # do we want this to route to a separate view?
-      format.html {render :index}
-      format.json {render json: @listings}
-    end
-  end
 
-  def create
-    @listing = Listing.new(listing_params)
-    @listing.save
+    #do we want this in a new view?
+    respond_to do |format|
+      format.html
+      format.json {render json: @listing.to_json}
+    end
   end
 
   private
@@ -66,4 +51,12 @@ class ListingsController < ApplicationController
   def set_listing
     @listing = Listing.find_by(id: params[:id])
   end
+
+  def render_formats
+    respond_to do |format|
+      format.html
+      format.json {render json: @listing.to_json}
+    end
+  end
+
 end

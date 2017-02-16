@@ -52,6 +52,11 @@ class ListingsController < ApplicationController
     end
   end
 
+  def create
+    @listing = Listing.new(listing_params)
+    @listing.save
+  end
+
   private
 
   def listing_params

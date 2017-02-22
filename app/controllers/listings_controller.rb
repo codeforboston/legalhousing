@@ -35,6 +35,9 @@ class ListingsController < ApplicationController
     render_listings_formats
   end
 
+  def home
+  end
+
   private
 
   def listing_params

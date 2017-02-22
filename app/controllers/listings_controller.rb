@@ -1,3 +1,5 @@
+require 'pry'
+
 class ListingsController < ApplicationController
   skip_before_filter :verify_authenticity_token
 
@@ -12,7 +14,7 @@ class ListingsController < ApplicationController
   def show
     set_listing
     render_formats
-    
+
   end
 
   def edit
@@ -38,7 +40,7 @@ class ListingsController < ApplicationController
     #do we want this in a new view?
     respond_to do |format|
       format.html
-      format.json {render json: @listing.to_json}
+      format.json {render json: @listings.to_json}
     end
   end
 

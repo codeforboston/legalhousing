@@ -4,8 +4,11 @@ class ListingsController < ApplicationController
   skip_before_filter :verify_authenticity_token
 
   def index
-    @listings = Listing.all
-    render_listings_formats
+    @listings = Listing.paginate(:page => params[:page], :per_page => 50)
+    respond_to do |format|
+      format.html
+      format.json {render json: @listings.to_json}
+    end
   end
 
   def show

@@ -9,6 +9,14 @@
   </head>
 
   <body>
-    <%= yield %>
+  <div>
+  <%= render 'layouts/header' %>
+    <div id="flash_messages" class="flash_style">
+      <% flash.each do |key, value| %>
+        <%= content_tag(:div, value, :class => "flash #{key}") %>
+      <% end %>
+    </div>
+  </div>
+  <%= yield %>
   </body>
 </html>

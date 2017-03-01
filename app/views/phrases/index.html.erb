@@ -1,0 +1,25 @@
+<h1>Phrases</h1>
+
+<table>
+  <tr align="left">
+    <th>Phrase ID</th>
+    <th>Created</th>
+    <th>Updated</th> 
+    <th>Content</th>
+    <th>Category</th>
+    <th>SubCategory</th>
+    <th>DiscriminatoryIssue</th>
+
+  </tr>
+<% @phrases.each do |phrase| %>
+  <tr>
+  <td><%= phrase.id %></td>
+  <td><%= phrase.created_at.to_date %></td>
+  <td><%= phrase.updated_at.to_date %></td>
+  <td><%= phrase.content %></td>
+  <td><%= phrase.category %></td>
+  <td><%= phrase.subcategory %></td>
+  <td><%= phrase.discriminatory_issue %></td> 
+  </tr>
+<% end %>
+</table>

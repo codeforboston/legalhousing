@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170301061116) do
+ActiveRecord::Schema.define(version: 20170301155344) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -25,6 +25,15 @@ ActiveRecord::Schema.define(version: 20170301061116) do
     t.boolean  "discriminatory"
     t.datetime "created_at",                              null: false
     t.datetime "updated_at",                              null: false
+  end
+
+  create_table "phrases", force: :cascade do |t|
+    t.string   "content"
+    t.string   "category"
+    t.string   "subcategory"
+    t.string   "discriminatory_issue"
+    t.datetime "created_at",           null: false
+    t.datetime "updated_at",           null: false
   end
 
   create_table "scrapes", force: :cascade do |t|

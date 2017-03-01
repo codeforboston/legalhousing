@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
-  resources :listings
+  root to: 'listings#index'
+  resources :listings, :phrases
   get '/discriminatory', to: 'listings#discriminatory'
+  get '/check_listings', to: 'listings#check_listings'
   # get 'listings/show'
   # get 'listings/edit'
   # get 'listings/update'

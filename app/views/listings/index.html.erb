@@ -1,5 +1,7 @@
+<h1>Listings</h1>
 <table>
   <tr>
+    <th>Listing ID</th>
     <th>heading</th>
     <th>listed at</th>
     <th>address</th>
@@ -11,6 +13,7 @@
 
   <% @listings.each do |listing| %>
     <tr>
+      <td><%= listing.id %></td>
       <td><%= link_to listing.heading, listing_path(listing) %></td>
       <td><%= listing.listed_at %></td>
       <td><%= listing.address %></td>

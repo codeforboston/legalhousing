@@ -2,7 +2,7 @@ class ListingsController < ApplicationController
   skip_before_filter :verify_authenticity_token
 
   def index
-    @listings = Listing.all
+    @listings = Listing.all.sort
     respond_to do |format|
       format.html
       format.json {render json: @listings.to_json}
@@ -12,7 +12,6 @@ class ListingsController < ApplicationController
   def show
     set_listing
     render_formats
-    
   end
 
   def edit
@@ -32,13 +31,19 @@ class ListingsController < ApplicationController
     render_formats
   end
 
+  def check_listings
+    Listing.check_listings
+    redirect_to discriminatory_path
+  end
+
   def discriminatory
-    @listings = Listing.discriminatory
+    @listings = Listing.where(discriminatory: true)
 
     #do we want this in a new view?
     respond_to do |format|
       format.html
       format.json {render json: @listing.to_json}
+    render 'listings/discriminatory'
     end
   end
 

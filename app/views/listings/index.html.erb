@@ -1,3 +1,7 @@
+<%= form_tag(listings_path, :method => "get", id: "search-form") do %>
+  <%= text_field_tag :search, params[:search], placeholder: "Search Terms" %>
+<% end %>
+
 <table>
   <tr>
     <th>heading</th>
@@ -22,3 +26,4 @@
   <% end %>
 </table>
 <%= will_paginate @listings %>
+<%= link_to 'Return to Main Page', listings_path %>

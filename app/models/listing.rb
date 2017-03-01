@@ -13,8 +13,12 @@ class Listing < ApplicationRecord
         return false
     end
   end
-  
+
   def self.discriminatory
     Listing.all.select {|listing| listing.discriminatory == true}
+  end
+
+  def self.search(search)
+    where("description ILIKE ? OR heading ILIKE ? OR address ILIKE ?", "%#{search}%", "%#{search}%", "%#{search}%")
   end
 end

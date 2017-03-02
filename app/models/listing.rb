@@ -13,7 +13,6 @@ class Listing < ApplicationRecord
     Listing.all.each do |listing|
       desc = listing.description.split(" ")
       @results = (desc & @phrases)
-# binding.pry
       process_listing(listing, @results)
 
     end
@@ -21,12 +20,19 @@ class Listing < ApplicationRecord
 
   def self.process_listing(listing, results)
     if results.length >= 1
-      listing.phrases.update(results)
       listing.discriminatory = true
+      add_results_to_listing(listing, results)
       listing.save
     else
       listing.discriminatory = false
       listing.save
+    end
+  end
+
+  def self.add_results_to_listing(listing, results)
+    results.each do |result|
+    phrase = Phrase.find_or_create_by(content: result)
+      ListingPhrase.create(listing_id: listing.id, phrase_id: phrase.id )
     end
   end
 

@@ -22,8 +22,8 @@
     <%= f.text_field :longitude %>
   </p>
   <p>
-    <%= f.label :latitude %>
-    <%= f.text_field :latitude %>
+    <%= f.label :category %>
+    <%= f.collection_selection :category_id, Category.all, :id, :name %>
   </p>
   <p>
     <%= f.label :description %>

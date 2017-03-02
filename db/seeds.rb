@@ -13,3 +13,18 @@ end
 5.times do 
   Listing.create(address: "i'm an address", latitude: 5.5, longitude: 5.5, description: "I'm discriminatory", discriminatory: true, listed_at: DateTime.now, heading: "apt for rent")
 end
+
+Category.create([
+  { name: 'unassigned' },
+  { name: 'Sexual Orientation' },
+  { name: 'National Origin' },
+  { name: 'Race' },
+  { name: 'Mental Disability' },
+  { name: 'Physical Disability' },
+  { name: 'Religion' },
+  { name: 'Political Affiliation' },
+  { name: 'Weight or Height' },
+  { name: 'Yankees Fan' },
+  { name: 'Age' }
+])
+ 

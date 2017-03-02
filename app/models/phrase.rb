@@ -1,6 +1,9 @@
 class Phrase < ApplicationRecord
   has_many :listing_phrases
   has_many :listings, through: :listing_phrases
+  belongs_to :category
+
+  validates :content, presence: true, uniqueness: true
 
   def self.import_phrases
     wordsfile = File.join Rails.root, "./assets/Words.txt"
@@ -8,17 +11,12 @@ class Phrase < ApplicationRecord
       term = phrase.gsub(", ", "")
       phrase = Phrase.find_or_create_by(content: term.strip)
     end
-    self.scrub_phrases
-  end
-
-  def self.scrub_phrases
-    Phrase.all.each do |phrase|
-      phrase.content.strip
-      phrase.save
-    end
   end
 
   def self.delete_phrases
-    Phrase.all.each {|p|p.delete}
+    # Phrase.all.each {|p|p.delete}
+    sql =  <<-SQL 
+      TRUNCATE TABLE phrases ('RESTART IDENTITY CASCADE') 
+        SQL
   end
 end

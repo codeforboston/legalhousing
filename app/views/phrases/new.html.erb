@@ -1,2 +1,13 @@
-<h1>Phrases#new</h1>
-<p>Find me in app/views/phrases/new.html.erb</p>
+<h1>New Phrase</h1>
+   
+<%= form_for @phrase do |f| %>
+  <p>
+    <%= f.label :content %>
+    <%= f.text_field :content %>
+  </p>
+  <p>
+    <%= f.label :category %>
+    <%= f.collection_selection :category_id, Category.all, :id, :name %>
+  </p>
+  <%= f.submit %>
+<% end %>

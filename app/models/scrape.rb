@@ -1,5 +1,9 @@
 class Scrape < ApplicationRecord
 
+##############################
+###  pay NO ATTENTION to the mess below.
+###  move along, nothing to see here.
+##############################
   def self.scrape
     # page = HTTParty.get('https://boston.craigslist.org/search/aap')
 

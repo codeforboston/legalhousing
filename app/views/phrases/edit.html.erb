@@ -7,23 +7,7 @@
   </p>
   <p>
     <%= f.label :category %>
-    <%= f.text_field :category %>
-  </p>
-  <p>
-    <%= f.label :subcategory %>
-    <%= f.text_field :subcategory %>
-  </p>
-  <p>
-    <%= f.label :discriminatory_issue %>
-    <%= f.text_field :discriminatory_issue %>
-  </p>
-  <p>
-    <%= f.label :created_at %>
-    <%= f.text_field :created_at %>
-  </p>
-  <p>
-    <%= f.label :updated_at %>
-    <%= f.text_field :updated_at %>
+    <%= f.collection_selection :category_id, Category.all, :id, :name %>
   </p>
   <%= f.submit %>
 <% end %>

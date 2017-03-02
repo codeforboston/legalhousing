@@ -1,12 +1,12 @@
-<h1>Listings#show</h1>
-<!-- <p>Find me in app/views/listings/show.html.erb</p> -->
+<h1>Listing Show</h1>
 
 <ul>
-  <li>heading: <%= @listing.heading %></li>
-  <li>listed_at: <%= @listing.listed_at %></li>
-  <li>address: <%= @listing.address %></li>
-  <li>latitude: <%= @listing.latitude %></li>
-  <li>longitude: <%= @listing.longitude %></li>
-  <li>description: <%= @listing.description %></li>
-  <li>discriminatory: <%= @listing.discriminatory %></li>
+  <li>Heading: <%= @listing.heading %></li>
+  <li>Date listed: <%= @listing.listed_at %></li>
+  <li>Address: <%= @listing.address %></li>
+  <li>Lat: <%= @listing.latitude %></li>
+  <li>Long: <%= @listing.longitude %></li>
+  <li>Category: <%= @listing.category.name %></li>  
+  <li>Description: <%= @listing.description %></li>
+  <li>Discriminatory?: <%= @listing.discriminatory %></li>
 </ul>

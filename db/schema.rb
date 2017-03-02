@@ -10,16 +10,22 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170301232336) do
+ActiveRecord::Schema.define(version: 20170302050514) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "listing_phrases", force: :cascade do |t|
+  create_table "categories", force: :cascade do |t|
+    t.string "name"
+  end
+
+  create_table "issues", force: :cascade do |t|
     t.integer  "listing_id"
     t.integer  "phrase_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.integer  "category_id"
+    t.string   "content"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
   end
 
   create_table "listings", force: :cascade do |t|
@@ -36,11 +42,9 @@ ActiveRecord::Schema.define(version: 20170301232336) do
 
   create_table "phrases", force: :cascade do |t|
     t.string   "content"
-    t.string   "category"
-    t.string   "subcategory"
-    t.string   "discriminatory_issue"
-    t.datetime "created_at",           null: false
-    t.datetime "updated_at",           null: false
+    t.integer  "category_id", default: 1
+    t.datetime "created_at",              null: false
+    t.datetime "updated_at",              null: false
   end
 
   create_table "scrapes", force: :cascade do |t|

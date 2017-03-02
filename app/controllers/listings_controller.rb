@@ -1,4 +1,5 @@
 class ListingsController < ApplicationController
+  before_action :set_listing, only:[:show, :edit, :update]
   skip_before_filter :verify_authenticity_token
 
   def index
@@ -10,19 +11,22 @@ class ListingsController < ApplicationController
   end
 
   def show
-    set_listing
     render_formats
   end
 
   def edit
-    set_listing
     render_formats
   end
 
   def update
-    set_listing
-    set_listing.update(listing_params)
-    render_formats
+    @listing.update(listing_params)
+    if @listing.save
+      flash[:message] = "Listing updated"
+      redirect_to listing_path
+      render_formats
+    else
+      render :edit 
+    end
   end
 
   def create
@@ -54,7 +58,7 @@ class ListingsController < ApplicationController
   end
 
   def set_listing
-    @listing = Listing.find_by(id: params[:id])
+    @listing = Listing.find_by_id(params[:id])
   end
 
   def render_formats

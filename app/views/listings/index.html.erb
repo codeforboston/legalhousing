@@ -1,21 +1,23 @@
 <h1>Listings</h1>
 <table>
-  <tr>
-    <th>Listing ID</th>
-    <th>heading</th>
-    <th>listed at</th>
-    <th>address</th>
-    <th>latitude</th>
-    <th>longitude</th>
-    <th>description</th>
-    <th>discriminatory</th>
+  <tr align="left">
+    <th>Edit</th>
+    <th>ID</th>
+    <th>Heading</th>
+    <th>Date listed</th>
+    <th>Address</th>
+    <th>Lat</th>
+    <th>Long</th>
+    <th>Description</th>
+    <th>Discriminatory?</th>
   </tr>
 
   <% @listings.each do |listing| %>
     <tr>
+      <td><%= link_to "Edit Listing", edit_listing_path(listing) %></td>
       <td><%= listing.id %></td>
       <td><%= link_to listing.heading, listing_path(listing) %></td>
-      <td><%= listing.listed_at %></td>
+      <td><%= listing.listed_at.to_date %></td>
       <td><%= listing.address %></td>
       <td><%= listing.latitude %></td>
       <td><%= listing.longitude %></td>

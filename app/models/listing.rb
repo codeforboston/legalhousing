@@ -32,7 +32,8 @@ class Listing < ApplicationRecord
   def self.add_results_to_listing(listing, results)
     results.each do |result|
     phrase = Phrase.find_or_create_by(content: result)
-      ListingPhrase.create(listing_id: listing.id, phrase_id: phrase.id )
+    issue = Issue.new(listing_id: listing.id, phrase_id: phrase.id)
+    issue.save
     end
   end
 

@@ -28,3 +28,10 @@ Category.create([
   { name: 'Age' }
 ])
  
+Issue.create([
+  {listing_id: 11, phrase_id: 1, category_id: 1, content: "possibly biased rental ad, needs 2nd look", history: "flagged in db as discriminatory", status: 0},
+  {listing_id: 12, phrase_id: 2, category_id: 2, content: "possibly biased rental ad, needs 2nd look", history: "flagged in db as discriminatory", status: 0},
+  {listing_id: 13, phrase_id: 3, category_id: 3, content: "possibly biased rental ad, needs 2nd look", history: "flagged in db as discriminatory", status: 0},
+  {listing_id: 14, phrase_id: 4, category_id: 4, content: "possibly biased rental ad, needs 2nd look", history: "flagged in db as discriminatory", status: 0},
+  {listing_id: 15, phrase_id: 5, category_id: 5, content: "possibly biased rental ad, needs 2nd look", history: "flagged in db as discriminatory", status: 0}
+  ])

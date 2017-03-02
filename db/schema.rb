@@ -24,8 +24,10 @@ ActiveRecord::Schema.define(version: 20170302050514) do
     t.integer  "phrase_id"
     t.integer  "category_id"
     t.string   "content"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.text     "history"
+    t.integer  "status",      default: 0
+    t.datetime "created_at",              null: false
+    t.datetime "updated_at",              null: false
   end
 
   create_table "listings", force: :cascade do |t|

@@ -1,4 +1,5 @@
 source 'https://rubygems.org'
+gem 'pundit'
 gem 'nokogiri'
 gem 'httparty'
 gem 'active_model_serializers'

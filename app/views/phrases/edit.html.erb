@@ -7,7 +7,7 @@
   </p>
   <p>
     <%= f.label :category %>
-    <%= f.collection_selection :category_id, Category.all, :id, :name %>
+    <%= f.collection_select :category_id, Category.all, :id, :name %>
   </p>
   <%= f.submit %>
 <% end %>

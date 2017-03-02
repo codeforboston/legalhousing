@@ -1,0 +1,9 @@
+IssueID:<%= issue.id %><br>
+Date Created:<%= issue.created_at.to_date %><br>
+Listing:<%= link_to issue.listing.heading, listing_path(issue.listing) %><br> 
+Phrase:<%= link_to issue.phrase.content, phrase_path(issue.phrase) %><br>
+Category:<%= link_to issue.phrase.category.name, category_path(issue.phrase.category) %><br>
+Content: <%= issue.content %><br>    
+History:<%= issue.history %><br> 
+Status:<%= issue.status %><br>
+

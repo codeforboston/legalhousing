@@ -1,0 +1,24 @@
+<h1>Issue Show</h1>
+    <%= link_to "Delete", issue_path(@issue), method: :delete %> |
+    <%= link_to "Edit", edit_issue_path(@issue) %> |
+    IssueID:<%= @issue.id %> |
+    Date Created:<%= @issue.created_at.to_date %><br><br>
+  <p>
+    Listing:<%= link_to @issue.listing.heading, listing_path(@issue.listing) %>  
+  </p>
+  <p>
+    Phrase:<%= link_to @issue.phrase.content, phrase_path(@issue.phrase) %>
+  </p>
+  <p>
+    Category:<%= link_to @issue.category.name, category_path(@issue.category_id) %>
+  </p>
+  <p>
+    Content: <%= @issue.content %>    
+  </p>
+  <p>
+    History:<%= @issue.history %> 
+  </p>
+  <p>
+    Status:<%= @issue.status %>
+  </p>
+

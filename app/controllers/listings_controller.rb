@@ -33,6 +33,7 @@ class ListingsController < ApplicationController
     @listing = Listing.new(listing_params)
     @listing.save
     render_formats
+    redirect_to listings_path
   end
 
   def check_all_listings

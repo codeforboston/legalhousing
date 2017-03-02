@@ -17,10 +17,11 @@ class IssuesController < ApplicationController
 
   def update
     @issue.update(issue_params)
+
     if @issue.save
       flash[:message] = "Phrase updated"
-      redirect_to issue_path
       render_formats
+      redirect_to issue_path
     else
       render :edit 
     end
@@ -41,8 +42,18 @@ class IssuesController < ApplicationController
   end
 
   private
+  def set_issue
+    @issue = Issue.find_by_id(params[:id])
+  end
 
   def issue_params
-    params.require(:issue).permit(:listing_id, :issue_id, :content)
+    params.require(:issue).permit(:id, :status, :category_id, :phrase_id, :listing_id, :content, :history)
+  end
+
+  def render_formats
+    respond_to do |format|
+      format.html
+      format.json {render json: @listing.to_json}
+    end
   end
 end

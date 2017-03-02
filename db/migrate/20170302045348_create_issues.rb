@@ -5,6 +5,8 @@ class CreateIssues < ActiveRecord::Migration[5.0]
       t.integer :phrase_id
       t.integer :category_id
       t.string :content
+      t.text :history
+      t.integer :status, default: 0
 
       t.timestamps
     end

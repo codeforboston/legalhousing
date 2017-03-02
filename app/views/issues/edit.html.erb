@@ -1,0 +1,29 @@
+<h3>Current info:</h3><br>
+<%= render partial: 'issue', locals: { issue: @issue } %><br>
+<h3>Edit Issue</h3>
+
+Edit Issue:<br>
+  <%= form_for(@issue) do |f| %>
+  <p>
+    <%= f.label :status %>
+    <%= f.select(:status, Issue.statuses.keys.map {|status| [status.titleize,status]}) %>
+  </p>
+  <p>
+    <%= f.label :category %>
+    <%= f.collection_select :category_id, Category.all.order('name'), :id, :name %>
+  </p>
+  <p>
+    <%= f.label :phrase %>
+    <%= f.collection_select :phrase_id, Phrase.all, :id, :content %>
+  </p>
+  <p>
+    <%= f.label :content %>
+    <%= f.text_area :content %>
+  </p>
+  <p>
+    <%= f.label :history %>
+    <%= f.text_area :history %>
+  </p>
+
+  <%= f.submit %>
+<% end %>

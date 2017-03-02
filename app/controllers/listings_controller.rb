@@ -31,8 +31,8 @@ class ListingsController < ApplicationController
     render_formats
   end
 
-  def check_listings
-    Listing.check_listings
+  def check_all_listings
+    Listing.check_all_listings
     redirect_to discriminatory_path
   end
 

@@ -1,6 +1,6 @@
 class CategoriesController < ApplicationController
   before_action :set_category, only:[:show, :edit, :update]
-  skip_before_filter :verify_authenticity_token
+  skip_before_action :verify_authenticity_token
 
   def index
     @categories = Category.all.sort
@@ -25,7 +25,7 @@ class CategoriesController < ApplicationController
       redirect_to category_path
       render_formats
     else
-      render :edit 
+      render :edit
     end
   end
 

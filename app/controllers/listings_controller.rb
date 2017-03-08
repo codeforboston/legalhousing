@@ -1,18 +1,9 @@
 class ListingsController < ApplicationController
   before_action :set_listing, only:[:show, :edit, :update]
-  skip_before_filter :verify_authenticity_token
+  skip_before_action :verify_authenticity_token
 
   def index
-<<<<<<< HEAD
-    if params[:search]
-      @listings = Listing.search(params[:search]).order("created_at DESC").paginate(:page => params[:page], :per_page => 50)
-      @search_term = params[:search]
-    else
-      @listings = Listing.paginate(:page => params[:page], :per_page => 50)
-    end
-=======
-    @listings = Listing.all.sort
->>>>>>> 6d07bfc4a79506ee553e1390f5a07274b125622f
+    @listings = Listing.paginate(:page => params[:page], :per_page => 50)
     respond_to do |format|
       format.html
       format.json {render json: @listings.to_json}
@@ -34,7 +25,7 @@ class ListingsController < ApplicationController
       redirect_to listing_path
       render_formats
     else
-      render :edit 
+      render :edit
     end
   end
 

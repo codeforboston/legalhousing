@@ -1,5 +1,7 @@
 class Listing < ApplicationRecord
-<<<<<<< HEAD
+  has_many :listing_phrases
+  has_many :phrases, through: :listing_phrases
+
   def illegal?
     case self.description
       when /no\s*section\s*(8|eight)/i
@@ -14,20 +16,15 @@ class Listing < ApplicationRecord
         return false
     end
   end
-=======
-  has_many :listing_phrases
-  has_many :phrases, through: :listing_phrases
->>>>>>> 6d07bfc4a79506ee553e1390f5a07274b125622f
 
   def self.discriminatory
     Listing.all.select {|listing| listing.discriminatory == true}
   end
 
-<<<<<<< HEAD
   def self.search(search)
     where("description ILIKE ? OR heading ILIKE ? OR address ILIKE ?", "%#{search}%", "%#{search}%", "%#{search}%")
   end
-=======
+
   def self.check_all_listings
     @results = []
     @phrases = []
@@ -38,7 +35,7 @@ class Listing < ApplicationRecord
       process_listing(listing, @results)
 
     end
-  end 
+  end
 
   def self.process_listing(listing, results)
     if results.length >= 1
@@ -59,5 +56,4 @@ class Listing < ApplicationRecord
     end
   end
 
->>>>>>> 6d07bfc4a79506ee553e1390f5a07274b125622f
 end

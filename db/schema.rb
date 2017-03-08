@@ -10,12 +10,46 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170125023531) do
+ActiveRecord::Schema.define(version: 20170302050514) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
+  create_table "categories", force: :cascade do |t|
+    t.string "name"
+  end
+
+  create_table "issues", force: :cascade do |t|
+    t.integer  "listing_id"
+    t.integer  "phrase_id"
+    t.integer  "category_id"
+    t.string   "content"
+    t.text     "history"
+    t.integer  "status",      default: 0
+    t.datetime "created_at",              null: false
+    t.datetime "updated_at",              null: false
+  end
+
   create_table "listings", force: :cascade do |t|
+    t.datetime "listed_at"
+    t.string   "address"
+    t.decimal  "latitude",       precision: 10, scale: 6
+    t.decimal  "longitude",      precision: 10, scale: 6
+    t.string   "heading"
+    t.string   "description"
+    t.boolean  "discriminatory"
+    t.datetime "created_at",                              null: false
+    t.datetime "updated_at",                              null: false
+  end
+
+  create_table "phrases", force: :cascade do |t|
+    t.string   "content"
+    t.integer  "category_id", default: 1
+    t.datetime "created_at",              null: false
+    t.datetime "updated_at",              null: false
+  end
+
+  create_table "scrapes", force: :cascade do |t|
     t.datetime "listed_at"
     t.string   "address"
     t.decimal  "latitude",       precision: 10, scale: 6

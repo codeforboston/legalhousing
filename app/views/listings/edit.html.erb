@@ -1,2 +1,37 @@
 <h1>Listings#edit</h1>
-<p>Find me in app/views/listings/edit.html.erb</p>
+   
+  <%= form_for @listing do |f| %>
+  <p>
+    <%= f.label :heading %>
+    <%= f.text_field :heading %>
+  </p>
+  <p>
+    <%= f.label :listed_at %>
+    <%= f.date_field :listed_at %>
+  </p>
+  <p>
+    <%= f.label :address %>
+    <%= f.text_field :address %>
+  </p>
+  <p>
+    <%= f.label :latitude %>
+    <%= f.text_field :latitude %>
+  </p>
+  <p>
+    <%= f.label :longitude %>
+    <%= f.text_field :longitude %>
+  </p>
+  <p>
+    <%= f.label :category %>
+    <%= f.collection_select :category_id, Category.all, :id, :name %>
+  </p>
+  <p>
+    <%= f.label :description %>
+    <%= f.text_field :description %>
+  </p>
+  <p>
+    <%= f.label :discriminatory %>
+    <%= f.text_field :discriminatory %>
+  </p>
+  <%= f.submit %>
+<% end %>

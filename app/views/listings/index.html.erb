@@ -1,22 +1,30 @@
+<<<<<<< HEAD
 <%= form_tag(listings_path, :method => "get", id: "search-form") do %>
   <%= text_field_tag :search, params[:search], placeholder: "Search Terms" %>
 <% end %>
 
+=======
+<h1>Listings</h1>
+>>>>>>> 6d07bfc4a79506ee553e1390f5a07274b125622f
 <table>
-  <tr>
-    <th>heading</th>
-    <th>listed at</th>
-    <th>address</th>
-    <th>latitude</th>
-    <th>longitude</th>
-    <th>description</th>
-    <th>discriminatory</th>
+  <tr align="left">
+    <th>Edit</th>
+    <th>ID</th>
+    <th>Heading</th>
+    <th>Date listed</th>
+    <th>Address</th>
+    <th>Lat</th>
+    <th>Long</th>
+    <th>Description</th>
+    <th>Discriminatory?</th>
   </tr>
 
   <% @listings.each do |listing| %>
     <tr>
+      <td><%= link_to "Edit Listing", edit_listing_path(listing) %></td>
+      <td><%= listing.id %></td>
       <td><%= link_to listing.heading, listing_path(listing) %></td>
-      <td><%= listing.listed_at %></td>
+      <td><%= listing.listed_at.to_date %></td>
       <td><%= listing.address %></td>
       <td><%= listing.latitude %></td>
       <td><%= listing.longitude %></td>

@@ -1,0 +1,27 @@
+<%= link_to "Import Phrases", import_phrases_path  %> 
+|
+<%= link_to "New Phrase", new_phrase_path  %> 
+
+<h1>Phrases</h1>
+<table>
+  <tr align="left">
+    <th>Delete</th>
+    <th>Edit</th>
+    <th>ID</th>
+    <th>Created</th>
+    <th>Updated</th> 
+    <th>Content</th>
+    <th>Category</th>
+  </tr>
+<% @phrases.each do |phrase| %>
+  <tr>
+  <td><%= link_to "Delete", phrase_path(phrase), method: :delete %></td>
+  <td><%= link_to "Edit", edit_phrase_path(phrase) %></td>
+  <td><%= phrase.id %></td>
+  <td><%= phrase.created_at.to_date %></td>
+  <td><%= phrase.updated_at.to_date %></td>
+  <td><%= phrase.content %></td>
+  <td><%= phrase.category.name %></td>
+  </tr>
+<% end %>
+</table>

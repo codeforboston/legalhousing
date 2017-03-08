@@ -1,1 +1,28 @@
-discriminatory page
+
+<%= link_to "Re-find Discriminatory", check_all_listings_path %>
+
+<h1>Discriminatory Listings</h1>
+
+<table>
+  <tr align="left">
+    <th>Heading</th>
+    <th>Date listed</th>
+    <th>Address</th>
+    <th>Lat</th>
+    <th>Long</th>
+    <th>Description</th>
+    <th>Discriminatory?</th>
+  </tr>
+
+  <% @listings.each do |listing| %>
+    <tr>
+      <td><%= link_to listing.heading, listing_path(listing) %></td>
+      <td><%= listing.listed_at.to_date %></td>
+      <td><%= listing.address %></td>
+      <td><%= listing.latitude %></td>
+      <td><%= listing.longitude %></td>
+      <td><%= listing.description %></td>
+      <td><%= listing.discriminatory %></td>
+    </tr>
+  <% end %>
+</table>

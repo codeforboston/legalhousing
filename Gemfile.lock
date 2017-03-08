@@ -91,6 +91,8 @@ GEM
       guard-compat (~> 1.1)
       rspec (>= 2.99.0, < 4.0)
     http_parser.rb (0.6.0)
+    httparty (0.14.0)
+      multi_xml (>= 0.5.2)
     i18n (0.7.0)
     jbuilder (2.6.1)
       activesupport (>= 3.0.0, < 5.1)
@@ -119,6 +121,7 @@ GEM
     mini_portile2 (2.1.0)
     minitest (5.10.1)
     multi_json (1.12.1)
+    multi_xml (0.6.0)
     nenv (0.3.0)
     nio4r (1.2.1)
     nokogiri (1.7.0.1)
@@ -137,6 +140,8 @@ GEM
     pry-rails (0.3.4)
       pry (>= 0.9.10)
     puma (3.6.2)
+    pundit (1.1.0)
+      activesupport (>= 3.0.0)
     rack (2.0.1)
     rack-test (0.6.3)
       rack (>= 1.0)
@@ -243,13 +248,16 @@ DEPENDENCIES
   guard
   guard-livereload
   guard-rspec
+  httparty
   jbuilder (~> 2.5)
   jquery-rails
   listen (~> 3.0.5)
+  nokogiri
   pg (~> 0.18)
   pry-byebug
   pry-rails
   puma (~> 3.0)
+  pundit
   rails (~> 5.0.0, >= 5.0.0.1)
   rails-controller-testing
   rb-fsevent
@@ -264,4 +272,4 @@ DEPENDENCIES
   will_paginate (~> 3.1.0)
 
 BUNDLED WITH
-   1.13.7
+   1.14.4

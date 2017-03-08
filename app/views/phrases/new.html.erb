@@ -1,0 +1,13 @@
+<h1>New Phrase</h1>
+   
+<%= form_for @phrase do |f| %>
+  <p>
+    <%= f.label :content %>
+    <%= f.text_field :content %>
+  </p>
+  <p>
+    <%= f.label :category %>
+    <%= f.collection_select :category_id, Category.all, :id, :name %>
+  </p>
+  <%= f.submit %>
+<% end %>

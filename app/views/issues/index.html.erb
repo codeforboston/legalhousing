@@ -1,0 +1,30 @@
+<h1>Issues</h1>
+<table>
+  <tr align="left">
+    <th>Delete</th>
+    <th>Edit</th>
+    <th>IssueID</th>
+    <th>Date Created</th>
+    <th>Listing</th>
+    <th>Phrase</th>
+    <th>Category</th>
+    <th>Content</th> 
+    <th>History</th>
+    <th>Status</th>
+  </tr>
+
+  <% @issues.each do |issue| %>
+    <tr>
+      <td><%= link_to "Delete", issue_path(issue), method: :delete %></td>
+      <td><%= link_to "Edit", edit_issue_path(issue) %></td>
+      <td><%= issue.id %></td>
+      <td><%= issue.created_at.to_date %></td>
+      <td><%= link_to issue.listing.heading, listing_path(issue.listing) %></td>
+      <td><%= link_to issue.phrase.content, phrase_path(issue.phrase) %></td>
+      <td><%= link_to issue.phrase.category.name, category_path(issue.phrase.category) %></td>
+      <td><%= issue.content %></td>
+      <td><%= issue.history %></td>
+      <td><%= issue.status %></td>
+    </tr>
+  <% end %>
+</table>

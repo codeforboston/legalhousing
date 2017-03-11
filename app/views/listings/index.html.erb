@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -47,25 +48,25 @@
   </div>
   <div class="container">
 <table>
-  <tr>
-    <th>heading</th>
-    <th>listed at</th>
-    <th>address</th>
-    <th>latitude</th>
-    <th>longitude</th>
-    <th>description</th>
-    <th>discriminatory</th>
+  <tr id="headers">
+    <th class="heading-label">heading</th>
+    <th class="date-time-label">listed at</th>
+    <th class="address-label">address</th>
+    <th class="latitude-label">latitude</th>
+    <th class="longitude-label">longitude</th>
+    <th class="description-label">description</th>
+    <th class="descriminatory-label">discriminatory</th>
   </tr>
 
   <% @listings.each do |listing| %>
     <tr>
-      <td><%= link_to listing.heading, listing_path(listing) %></td>
-      <td><%= listing.listed_at %></td>
-      <td><%= listing.address %></td>
-      <td><%= listing.latitude %></td>
-      <td><%= listing.longitude %></td>
-      <td><%= listing.description %></td>
-      <td><%= listing.discriminatory %></td>
+      <td class="heading-item"><%= link_to listing.heading, listing_path(listing) %></td>
+      <td class="date-time-item"><%= listing.listed_at %></td>
+      <td class="address-item"><%= listing.address %></td>
+      <td class="latitude-item"><%= listing.latitude %></td>
+      <td class="longitude-item"><%= listing.longitude %></td>
+      <td class="description-item"><%= listing.description %></td>
+      <td class="descriminatory-item"><%= listing.discriminatory %></td>
     </tr>
   <% end %>
 </table>

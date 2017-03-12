@@ -47,6 +47,7 @@
     </div>
   </div>
   <div class="container">
+    <button id="click-button">Button</button>
 <table>
   <tr id="headers">
     <th class="heading-label">heading</th>
@@ -59,7 +60,7 @@
   </tr>
 
   <% @listings.each do |listing| %>
-    <tr>
+    <tr class="housing-column">
       <td class="heading-item"><%= link_to listing.heading, listing_path(listing) %></td>
       <td class="date-time-item"><%= listing.listed_at %></td>
       <td class="address-item"><%= listing.address %></td>

@@ -39,7 +39,6 @@ if __name__ == '__main__':
         if pageData is not None:
             curData = json.loads(pageData.content)
             if i == 1:
-                print curData
                 rawData = curData
             else:
                 rawData.extend(curData)

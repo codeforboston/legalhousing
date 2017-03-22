@@ -27,56 +27,66 @@
   <!-- Favicon
   –––––––––––––––––––––––––––––––––––––––––––––––––– -->
   <link rel="icon" type="image/png" href="images/favicon.png">
-
 </head>
 <body>
 
   <!-- Primary Page Layout
   –––––––––––––––––––––––––––––––––––––––––––––––––– -->
-  <div class="container">
-    <div class="row">
-      <div class="twelve column" style="margin-top: 25%">
-        <h1 style ="text-align:center;">Understanding Discriminatory Housing in Boston</h1>
-        <div id = "housing-icon">
-          <img src="assets/housing.svg">
-        </div>
-        <p>
-         This is a project for the City of Boston that addresses the potential discriminatory housing rental practices in Boston as manifested through Craigslist postings.  </p>
+    <div class="container">
+      <div class="row">
+        <div class="twelve column" style="margin-top: 25%">
+          <h1 style ="text-align:center;">Understanding Discriminatory Housing in Boston</h1>
+          <div id = "housing-icon">
+            <img src="assets/housing.svg">
+          </div>
+          <p>
+           This is a project for the City of Boston that addresses the potential discriminatory housing rental practices in Boston as manifested through Craigslist postings.  </p>
 
+        </div>
       </div>
     </div>
-  </div>
-  <div class="container">
-    <button id="click-button">Button</button>
-<table>
-  <tr id="headers">
-    <th class="heading-label">heading</th>
-    <th class="date-time-label">listed at</th>
-    <th class="address-label">address</th>
-    <th class="latitude-label">latitude</th>
-    <th class="longitude-label">longitude</th>
-    <th class="description-label">description</th>
-    <th class="descriminatory-label">discriminatory</th>
-  </tr>
-
-  <% @listings.each do |listing| %>
-    <tr class="housing-column">
-      <td class="heading-item"><%= link_to listing.heading, listing_path(listing) %></td>
-      <td class="date-time-item"><%= listing.listed_at %></td>
-      <td class="address-item"><%= listing.address %></td>
-      <td class="latitude-item"><%= listing.latitude %></td>
-      <td class="longitude-item"><%= listing.longitude %></td>
-      <td class="description-item"><%= listing.description %></td>
-      <td class="descriminatory-item"><%= listing.discriminatory %></td>
+    <div class="container">
+      <button id="click-button">Button</button>
+  <table>
+    <tr id="headers">
+      <th class="heading-label">heading</th>
+      <th class="date-time-label">listed at</th>
+      <th class="address-label">address</th>
+      <th class="latitude-label">latitude</th>
+      <th class="longitude-label">longitude</th>
+      <th class="description-label">description</th>
+      <th class="descriminatory-label">discriminatory</th>
     </tr>
-  <% end %>
-</table>
-<%= will_paginate @listings %>
 
-</div>
-  </body>
+    <% @listings.each do |listing| %>
+      <tr class="housing-column">
+        <td class="heading-item"><%= link_to listing.heading, listing_path(listing) %></td>
+        <td class="date-time-item"><%= listing.listed_at %></td>
+        <td class="address-item"><%= listing.address %></td>
+        <td class="latitude-item"><%= listing.latitude %></td>
+        <td class="longitude-item"><%= listing.longitude %></td>
+        <td class="description-item"><%= listing.description %></td>
+        <td class="descriminatory-item"><%= listing.discriminatory %></td>
+      </tr>
+    <% end %>
+  </table>
+  <%= will_paginate @listings %>
 
+  </div>
+  <div id="viz"></div>
+  <script src="//d3plus.org/js/d3.js"></script>
+  <script src="//d3plus.org/js/d3plus.js"></script>
 
+  <script>
+      var data = <% @listings %;
+      d3plus.viz()
+        .container("#viz")
+        .data(data)
+        .type("pie")
+        .id("name")
+        .size("value")
+        .draw()
+  </script>
 <!-- End Document
   –––––––––––––––––––––––––––––––––––––––––––––––––– -->
 </body>

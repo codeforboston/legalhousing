@@ -1,7 +1,8 @@
 #command line usage: python script_filename int
-#sys.argv[1] is the number of listings to upload to the local database
+#sys.argv[1] is the number of PAGES of data to upload to the local database
+#this is because listings are paginated on the site
 
-import requests, sys, json, time
+import requests , sys, json, time
 from datetime import datetime
 
 class Listing:
@@ -28,15 +29,27 @@ class Listing:
 
 if __name__ == '__main__':
 
-    j = int(sys.argv[1])
+    numPages = sys.argv[1]
 
-    get_data = requests.get('https://legalhousing.herokuapp.com/listings.json')
-    data = json.loads(get_data.content)
+    baseUrl = 'https://legalhousing.herokuapp.com/listings.json?page='
+
+    # get data by pages
+    for i in range(1, int(numPages)+1):
+        pageData = requests.get(baseUrl + str(i))
+        if pageData is not None:
+            curData = json.loads(pageData.content)
+            if i == 1:
+                print curData
+                rawData = curData
+            else:
+                rawData.extend(curData)
+
+    data = rawData
 
     #local database url to post to - change port if necessary
     url = 'http://localhost:3000/listings.json'
 
-    for i in range(j):
+    for i in range(len(data)-1):
         listing = data[i]
         listing_model = Listing(listing['address'], listing['listed_at'], listing['latitude'], listing['longitude'],
         listing['description'], listing['heading'])

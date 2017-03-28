@@ -1,7 +1,4 @@
-require 'rubygems'
 require 'nokogiri'
-require 'open-uri'
-require 'openssl'
 require_relative 'listing_scraper'
 require_relative 'listing_info'
 include HousingListingScraper

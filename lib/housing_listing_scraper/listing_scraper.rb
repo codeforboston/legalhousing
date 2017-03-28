@@ -1,4 +1,5 @@
-# Iterface for sites to scrape. Individual scrapers should implement all functions
+# Interface for housing listing sites to scrape. 
+# Individual scrapers should override all functions
 class ListingScraper
 
     # Return URL for listing search
@@ -11,8 +12,7 @@ class ListingScraper
         raise NotImplementedError
     end
 
-    # Parse individual housing listing. Returns JSON with
-    # housing data
+    # Parse individual housing listing. Should return ListingInfo struct
     def parse_listing_html(listing_html)
         raise NotImplementedError
     end 

@@ -27,6 +27,11 @@ class ListingsController < ApplicationController
     render_listing_formats
   end
 
+  def visualization
+    @listings = Listing.all
+    render_listings_formats
+  end
+
   def create
     @listing = Listing.new(listing_params)
     @listing.save

@@ -40,4 +40,4 @@ if __name__ == '__main__':
             headers=headers,
             json=listing_model.to_json())
 
-    print 'Finished'
+    print ('Finished')

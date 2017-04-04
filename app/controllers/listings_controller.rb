@@ -1,3 +1,5 @@
+require 'pry'
+
 class ListingsController < ApplicationController
   skip_before_filter :verify_authenticity_token
 
@@ -16,34 +18,38 @@ class ListingsController < ApplicationController
 
   def show
     set_listing
-    render_formats
+
+    render_listing_formats
   end
 
   def edit
     set_listing
-    render_formats
+    render_listing_formats
   end
 
   def update
     set_listing
     set_listing.update(listing_params)
-    render_formats
+    render_listing_formats
+  end
+
+  def visualization
+    @listings = Listing.all
+    render_listings_formats
   end
 
   def create
     @listing = Listing.new(listing_params)
     @listing.save
-    render_formats
+    render_listing_formats
   end
 
   def discriminatory
     @listings = Listing.discriminatory
+    render_listings_formats
+  end
 
-    #do we want this in a new view?
-    respond_to do |format|
-      format.html
-      format.json {render json: @listing.to_json}
-    end
+  def home
   end
 
   private
@@ -56,10 +62,17 @@ class ListingsController < ApplicationController
     @listing = Listing.find_by(id: params[:id])
   end
 
-  def render_formats
+  def render_listing_formats
     respond_to do |format|
       format.html
       format.json {render json: @listing.to_json}
+    end
+  end
+
+  def render_listings_formats
+    respond_to do |format|
+      format.html
+      format.json {render json: @listings.to_json}
     end
   end
 

@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  resources :listings
+  resources :listings, :phrases
   get '/discriminatory', to: 'listings#discriminatory'
   root to: "listings#home"
   get '/visualization', to: 'listings#visualization'

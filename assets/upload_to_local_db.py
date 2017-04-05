@@ -46,7 +46,7 @@ if __name__ == '__main__':
     data = rawData
 
     #local database url to post to - change port if necessary
-    url = 'http://localhost:4000/listings.json'
+    url = 'http://localhost:3000/listings.json'
 
     for i in range(len(data)-1):
         listing = data[i]

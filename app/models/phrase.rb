@@ -1,6 +1,7 @@
 require 'csv'
 class Phrase < ApplicationRecord
-
+  validates :content, uniqueness: true
+  
   def self.import_words
     wordsfile = File.join Rails.root, "./assets/Words.txt"
     CSV.read(wordsfile)[0].each do |word|

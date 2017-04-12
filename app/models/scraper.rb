@@ -1,2 +1,0 @@
-class Scraper < ApplicationRecord
-end

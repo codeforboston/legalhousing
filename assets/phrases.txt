@@ -1,0 +1,111 @@
+Application Number
+Application Date
+Type of Request
+Description of Request
+Status of Request
+Location
+Reason for Petition
+Reason for Petition (Other)
+Zoning Use Classification
+Variance Board of Appeals
+Board of Appeals Special Permit
+Current Use
+Proposed Use
+Zoning District
+Special Permit Hearing Deadline
+Special Permit Decision Deadline
+Variance Hearing Deadline
+Variance Decision Deadline
+Applied Online
+Zoning Ordinance Cited Article (field1)
+Zoning Ordinance Cited Section (field1)
+Zoning Ordinance Cited Article (field2)
+Zoning Ordinance Cited Section (field2)
+Zoning Ordinance Cited Article (field3)
+Zoning Ordinance Cited Section (field3)
+Zoning Ordinance Cited Article (field4)
+Zoning Ordinance Cited Section (field4)
+Zoning Ordinance Cited Article (field5)
+Zoning Ordinance Cited Section (field5)
+Zoning Ordinance Cited Article (field6)
+Zoning Ordinance Cited Section (field6)
+Zoning Ordinance Cited Article (field7)
+Zoning Ordinance Cited Section (field7)
+Desc Of Relief Req
+Summary For Publication
+Total Gross Floor Area
+Requested Total Gross Flr Area
+Ordinance Total Gross Flr Area
+Exisiting Lot Area
+Requested Lot Area
+Ordinance Lot Area
+Existing Gross Floor Area Ratio
+Requested Gross Floor Area Ratio
+Ordinance Gross Floor Area Ratio
+Existing Lot Area Dwelling Unit
+Requested Lot Area Dwelling Unit
+Ordinance Lot Area Dwelling Unit
+Requested Size of Lot Width
+Existing Size of Lot Width
+Ordinance Size of Lot Width
+Requested Size of Lot Depth
+Existing Size of Lot Depth
+Ordinance Size of Lot Depth
+Existing Setbacks Front
+Requested Setbacks Front
+Ordinance Setbacks Front
+Existing Setbacks Back
+Requested Setbacks Back
+Ordinance Setbacks Rear
+Existing Setbacks Left Side
+Requested Setbacks Left Side
+Ordinance Setbacks Left Side
+Existing Setbacks Right Side
+Requested Setbacks Right Side
+Ordinance Setbacks Right Side
+Existing Size of Building Height
+Requested Size of Building Height
+Ordinance Size of Building Height
+Existing Size Of Building Length
+Requested Size of Building Length
+Ordinance Size of Building Length
+Existing Size of Building Width
+Requested Size of Building Width
+Ordinance Size of Building Width
+Existing Usable Open Space Ratio
+Requested Usable Open Space Ratio
+Ordinance Useable Open Space Ratio
+Existing No of Dwelling Units
+Requested No of Dwelling Units
+Ordinance No of Dwelling Units
+Existing No of Parking Spaces
+Requested No of Parking Spaces
+Ordinance No of Parking Spaces
+Existing No of Loading Areas
+Requested No of Loading Areas
+Ordinance No Of Loading Areas
+Existing Distance to Nearest Bldg
+Requested Distance to Nearest Bldg
+Ordinance Distance to Nearest Building
+Description of Other Occupancies
+Literal Enforcement
+Desirable Relief Public Good
+Desirable Relief Nullifying
+Land Topography Hardship
+Requirements Of Ordinance
+TrafficPatterns
+Continued Operation
+Nuisance Or Hazard
+Other Reasons
+Petitioner City
+Petitioner State
+Decision Date
+
+
+
+
+
+
+
+
+

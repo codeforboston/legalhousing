@@ -15,7 +15,7 @@ module HousingListingScraper
             search_html = HTTParty.get(search_url)
             listing_urls = scraper.get_listing_URLs_from_search_html(search_html)
 
-            listing_urls.each do |listing_url| 
+            listing_urls.each do |listing_url|
                 listing_html = HTTParty.get(listing_url)
                 listing_info = scraper.parse_listing_html(listing_html)
                 listing_infos.push(listing_info)

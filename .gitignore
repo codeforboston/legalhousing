@@ -45,3 +45,8 @@ bower.json
 # Ignore data files
 *.json
 *.csv
+
+#ignore analysis files
+analysis/rentalflags.sas7bdat
+analysis/availunit.sas7bdat
+

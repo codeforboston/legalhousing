@@ -1,7 +1,7 @@
 require 'pry'
 
 class ListingsController < ApplicationController
-  skip_before_filter :verify_authenticity_token
+  skip_before_action :verify_authenticity_token
 
   def index
     @listings = Listing.paginate(:page => params[:page], :per_page => 50)
@@ -25,6 +25,11 @@ class ListingsController < ApplicationController
     set_listing
     set_listing.update(listing_params)
     render_listing_formats
+  end
+
+  def visualization
+    @listings = Listing.all
+    render_listings_formats
   end
 
   def create

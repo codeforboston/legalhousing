@@ -41,6 +41,7 @@ bower.json
 
 # Ignore Byebug command history file.
 .byebug_history
+<<<<<<< HEAD
 
 # Ignore data files
 *.json
@@ -50,3 +51,5 @@ bower.json
 analysis/rentalflags.sas7bdat
 analysis/availunit.sas7bdat
 
+=======
+>>>>>>> 76e25a3095f6a36b6919b383161c22494655b876

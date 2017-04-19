@@ -2,7 +2,6 @@ var loadData = function(){
   $.ajax({
     type: 'GET',
     url: '/visualization.json',
-<<<<<<< HEAD
     dataType: 'json',
     success: function(data){
       var listings = data.filter(function(point){
@@ -10,20 +9,12 @@ var loadData = function(){
       });
       drawPieChart(data);
       initMap(listings);
-=======
-    async: false,
-    dataType: 'json',
-    success: function(data){
-      drawPieChart(data);
-      console.log('success');
->>>>>>> 75b202216ef012d61be355621f9a8ccfcaae61fb
     },
     failure: function(result){
       alert('ERROR');
     }
   })
 }
-<<<<<<< HEAD
 
 function initMap(listings) {
   var map = new google.maps.Map(document.getElementById('map'), {
@@ -62,8 +53,6 @@ function initMap(listings) {
       {imagePath: 'https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/m'});
 }
 
-=======
->>>>>>> 75b202216ef012d61be355621f9a8ccfcaae61fb
 function drawPieChart(data){
   d3plus.viz()
     .container("#viz")
@@ -73,13 +62,7 @@ function drawPieChart(data){
     .size("id")
     .draw()
 }
-<<<<<<< HEAD
 
 $(document).ready(function(){
   loadData();
 })
-=======
-$(document).ready(function(){
-  loadData();
-})
->>>>>>> 75b202216ef012d61be355621f9a8ccfcaae61fb

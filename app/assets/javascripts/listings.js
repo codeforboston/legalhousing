@@ -30,16 +30,6 @@ function initMap(listings) {
         label: labels[i % labels.length]
       });
     });
-    var geoJson = [];
-    for (var listing in listings) {
-      var temp = {
-        type: 'Feature',
-        geometry: {type: 'Point', coordinates: [parseInt(listing.latitude, 10), parseInt(listing.longitude, 10)]},
-        properties: {name: 'address: ' + listing.address}
-      }
-      geoJson.push(temp);
-    }
-    map.data.addGeoJson({type: 'FeatureCollection', features: geoJson});
 
     var coordsDiv = document.getElementById('coords');
     map.controls[google.maps.ControlPosition.TOP_CENTER].push(coordsDiv);
@@ -49,8 +39,7 @@ function initMap(listings) {
           'lng: ' + Math.round(event.latLng.lng());
     });
   }
-  var markerCluster = new MarkerClusterer(map, markers,
-      {imagePath: 'https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/m'});
+  var markerCluster = new MarkerClusterer(map, markers, {imagePath: 'https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/m'});
 }
 
 function drawPieChart(data){

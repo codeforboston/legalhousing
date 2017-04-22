@@ -1,5 +1,0 @@
-from sas7bdat import SAS7BDAT
-with SAS7BDAT('availunit.sas7bdat') as f:
-    for row in f:
-        print(row)
-        break

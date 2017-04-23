@@ -16,7 +16,7 @@ namespace :classify_listings do
   desc 'Re-classify the loaded listings as discriminatory or not'
   task reclassify: :environment do
     Listing.all.each do |listing|
-      listing.update(discriminatory: false) if listing.illegal?
+      listing.update(discriminatory: true) if listing.illegal?
     end
   end
 

@@ -2,7 +2,6 @@ class Listing < ApplicationRecord
   def illegal?
       Phrase.all.each do |phrase|
           if self.description.match(/#{phrase.content}/i)
-              puts "found one!: #{phrase.content}"
               return true
           end
       end

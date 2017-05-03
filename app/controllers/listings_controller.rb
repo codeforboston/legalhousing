@@ -43,6 +43,11 @@ class ListingsController < ApplicationController
     render_listings_formats
   end
 
+  def visualization
+    @listings = Listing.all
+    render_listings_formats
+  end
+
   def home
   end
 

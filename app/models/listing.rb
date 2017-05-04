@@ -1,11 +1,11 @@
 class Listing < ApplicationRecord
   def illegal?
-      Phrase.all.each do |phrase|
-          if self.description.match(/#{phrase.content}/i)
-              return true
-          end
+    Phrase.all.each do |phrase|
+      if self.description.match(/#{phrase.content}/i)
+        return true
       end
-      return false
+    end
+  return false
   end
 
   def check_phrase(phrase)

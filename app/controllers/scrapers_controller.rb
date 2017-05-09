@@ -5,7 +5,7 @@ class ScrapersController < ApplicationController
   # POST /scrapers
   # POST /scrapers.json
   def create
-    listing_info, scraper_info = HousingListingScraper.run_scrapers()
+    listing_info, scraper_info = HousingListingScraper.run_scrapers
     listing_info.each do |scraper_listing|
       Listing.create(
         description: scraper_listing.description,

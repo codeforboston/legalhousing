@@ -1,9 +1,9 @@
-# Interface for housing listing sites to scrape. 
+# Interface for housing listing sites to scrape.
 # Individual scrapers should override all functions
 class ListingScraper
 
     # Return URL for listing search
-    def get_search_url() 
+    def get_search_url()
         raise NotImplementedError
     end
 
@@ -15,6 +15,10 @@ class ListingScraper
     # Parse individual housing listing. Should return ListingInfo struct
     def parse_listing_html(listing_html)
         raise NotImplementedError
-    end 
+    end
+
+    def get_site_name()
+        raise NotImplementedError
+    end
 
 end

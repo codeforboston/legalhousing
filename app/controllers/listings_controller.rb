@@ -5,10 +5,7 @@ class ListingsController < ApplicationController
 
   def index
     @listings = Listing.paginate(:page => params[:page], :per_page => 50)
-    respond_to do |format|
-      format.html
-      format.json {render json: @listings.to_json}
-    end
+    render_listings_formats
   end
 
   def show
@@ -44,6 +41,16 @@ class ListingsController < ApplicationController
   end
 
   def home
+  end
+
+  def track_changes
+# binding.pry
+    # if params['start_date']
+      @listings = Listing.all
+    # else
+      # @listings = []
+    # end
+    render_listings_formats
   end
 
   private

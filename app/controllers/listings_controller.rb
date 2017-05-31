@@ -43,16 +43,6 @@ class ListingsController < ApplicationController
   def home
   end
 
-  def track_changes
-# binding.pry
-    # if params['start_date']
-      @listings = Listing.all
-    # else
-      # @listings = []
-    # end
-    render_listings_formats
-  end
-
   private
 
   def listing_params

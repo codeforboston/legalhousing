@@ -44,50 +44,27 @@
     </div>
   </div>
   <div class="container">
-    <button id="click-button">Button</button>
-    <%= button_to "Run Scraper", scrapers_path %>
-
-    <div class="filters">
-      <%= form_for @listings, :url => {action: "track_changes"} do |f| %>
-        <%= options_for_select([["1", "1"], ["2", "2"], ["3", "3"]]) %>
-        <br>
-        start date: <%= select_date Date.today, prefix: :start_date %>
-        <br>
-        end date: <%= select_date Date.today, prefix: :start_date %>
-        <br>
-        phrase: 
-        <br>
-        <%= submit_tag("Filter") %>
-      <% end %>
+    <div class="row">
+      <div class='col-sm-3'>
+        <%= form_tag(tools_track_changes_path, method: 'post') do |f| %>
+          time period (months):
+          <%= select_tag "time period (months):", options_for_select((0..36).map {|i| [i,i] }) %>
+          <div class="input-group input-daterange">
+            <input type="text" class="form-control" value="2012-04">
+            <div class="input-group-addon">to</div>
+            <input type="text" class="form-control" value="2012-04">
+          </div>
+          <br>
+          <%= submit_tag("Filter") %>
+        <% end %>
+      </div>
     </div>
-
-    <table>
-      <tr id="headers">
-        <th class="heading-label">heading</th>
-        <th class="date-time-label">listed at</th>
-        <th class="address-label">address</th>
-        <th class="latitude-label">latitude</th>
-        <th class="longitude-label">longitude</th>
-        <th class="description-label">description</th>
-        <th class="descriminatory-label">discriminatory</th>
-      </tr>
-
-      <% @listings.each do |listing| %>
-        <tr class="housing-column">
-          <td class="heading-item"><%= link_to listing.heading, listing_path(listing) %></td>
-          <td class="date-time-item"><%= listing.listed_at %></td>
-          <td class="address-item"><%= listing.address %></td>
-          <td class="latitude-item"><%= listing.latitude %></td>
-          <td class="longitude-item"><%= listing.longitude %></td>
-          <td class="description-item"><%= listing.description %></td>
-          <td class="descriminatory-item"><%= listing.discriminatory %></td>
-        </tr>
-      <% end %>
-    </table>
-  <%# will_paginate @listings %>
-
   </div>
 
+
+<span class="input-group-addon">
+  <span class="glyphicon glyphicon-calendar"></span>
+</span>
 <!-- End Document
   –––––––––––––––––––––––––––––––––––––––––––––––––– -->
 </body>

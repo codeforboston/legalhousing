@@ -5,4 +5,7 @@ Rails.application.routes.draw do
   get '/discriminatory', to: 'listings#discriminatory'
   get '/visualization', to: 'listings#visualization'
   get '/tools/stats', to: 'stats#get_stats'
+  namespace :tools do
+    resources :track_changes
+  end
 end

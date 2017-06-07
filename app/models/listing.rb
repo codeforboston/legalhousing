@@ -1,4 +1,7 @@
 class Listing < ApplicationRecord
+	has_many :phrase_listings
+	has_many :phrases, through: :phrase_listings
+
   def illegal?
     Phrase.all.each do |phrase|
       if self.description.match(/#{phrase.content}/i)

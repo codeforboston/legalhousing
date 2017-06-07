@@ -9,8 +9,11 @@
   </head>
 
   <body>
-    <%= link_to "Home", root_path %>
-    <br>
+  <div class="navbar">
+    <ul class="nav navbar-nav">
+      <li><%= link_to "Home", root_path %></li>
+    </ul>
+  </div>
     <%= yield %>
   </body>
 </html>

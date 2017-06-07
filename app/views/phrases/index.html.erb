@@ -1,0 +1,26 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Phrases</h1>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @phrases.each do |phrase| %>
+      <tr>
+        <td><%= phrase.content %></td>
+        <td><%= link_to 'Show', phrase %></td>
+        <td><%= link_to 'Edit', edit_phrase_path(phrase) %></td>
+        <td><%= link_to 'Destroy', phrase, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Phrase', new_phrase_path, class: 'btn btn-default' %>

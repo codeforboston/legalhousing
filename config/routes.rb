@@ -4,5 +4,6 @@ Rails.application.routes.draw do
   resources :listings, :phrases
   get '/discriminatory', to: 'listings#discriminatory'
   get '/visualization', to: 'listings#visualization'
-  get '/tools/stats', to: 'stats#get_stats'
+  post '/tools/stats', to: 'stats#get_stats'
+  get '/tools/stats', to: 'stats#index'
 end

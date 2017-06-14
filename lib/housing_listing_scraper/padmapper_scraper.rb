@@ -7,7 +7,7 @@ class PadmapperScraper < ListingScraper
 
     PADMAPPER_BASE_URL = "https://www.padmapper.com"
 
-    def get_search_url() 
+    def get_search_url()
         return PADMAPPER_BASE_URL + "/apartments/boston-ma/downtown-boston"
     end
 
@@ -22,7 +22,7 @@ class PadmapperScraper < ListingScraper
     end
 
     def parse_listing_html(listing_html)
-        
+
         doc = Nokogiri::HTML(listing_html)
         description = doc.at_css("pre").text
         address = doc.at("meta[name='place:street_address']")['content']
@@ -30,5 +30,9 @@ class PadmapperScraper < ListingScraper
         latitude = doc.at("meta[name='place:location:latitude']")['content']
         longitude = doc.at("meta[name='place:location:longitude']")['content']
         return ListingInfo.new(description, address, zip_code, latitude, longitude)
-    end 
+    end
+
+    def get_site_name()
+        return "Paddmaper"
+    end
 end

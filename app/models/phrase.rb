@@ -1,7 +1,8 @@
 require 'csv'
 class Phrase < ApplicationRecord
-    has_many :phrase_listings
-    has_many :listings, through: :phrase_listings
+	has_many :phrase_listings
+	has_many :listings, through: :phrase_listings
+
   validates :content, uniqueness: true
 
   def self.import_words

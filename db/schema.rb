@@ -38,4 +38,11 @@ ActiveRecord::Schema.define(version: 20170531004719) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "scrapes", force: :cascade do |t|
+    t.string   "site"
+    t.integer  "number_of_listings"
+    t.datetime "created_at",         null: false
+    t.datetime "updated_at",         null: false
+  end
+
 end

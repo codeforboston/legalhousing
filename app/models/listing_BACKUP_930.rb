@@ -1,6 +1,11 @@
 class Listing < ApplicationRecord
+<<<<<<< HEAD
+  has_many :phrase_listings
+  has_many :phrases, through: :phrase_listings
+=======
 	has_many :phrase_listings
 	has_many :phrases, through: :phrase_listings
+>>>>>>> 040928f95babc6900dcf2582ecb5cbeb542933f1
 
   def illegal?
     flag = false

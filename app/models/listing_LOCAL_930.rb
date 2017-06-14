@@ -1,6 +1,6 @@
 class Listing < ApplicationRecord
-	has_many :phrase_listings
-	has_many :phrases, through: :phrase_listings
+  has_many :phrase_listings
+  has_many :phrases, through: :phrase_listings
 
   def illegal?
     flag = false
@@ -26,12 +26,4 @@ class Listing < ApplicationRecord
   def self.discriminatory
     Listing.all.select {|listing| listing.discriminatory == true}
   end
-
-	def self.num_listings
-		Listing.all.count
-	end
-	
-	def self.num_discriminatory
-		Listing.discriminatory.count
-	end
 end

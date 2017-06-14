@@ -3,18 +3,16 @@ class Listing < ApplicationRecord
 	has_many :phrases, through: :phrase_listings
 
   def illegal?
-    flag = false
     Phrase.all.each do |phrase|
-      if self.check_phrase(phrase.content)
-        PhraseListing.create(listing_id: self.id, phrase_id: phrase.id)
-        flag = true
+      if self.description.match(/#{phrase.content}/i)
+        return true
       end
     end
-  return flag
+  return false
   end
 
   def check_phrase(phrase)
-    regex = phrase.strip.gsub(' ','\s+')
+    regex = phrase.strip.gsub(' ','\s')
     reg_obj = Regexp.new(/#{regex}/i)
     if reg_obj.match(self.description)
       true

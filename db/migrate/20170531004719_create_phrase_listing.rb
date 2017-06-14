@@ -1,4 +1,4 @@
-class CreatePhraseListing < ActiveRecord::Migration[5.0]
+class CreatePhraseListings < ActiveRecord::Migration[5.0]
   def change
     create_table :phrase_listings do |t|
       t.integer :phrase_id

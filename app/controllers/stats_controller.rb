@@ -32,7 +32,7 @@ class StatsController < ApplicationController
 
     respond_to do |format|
       format.html
-      format.json { render json: { something: stats } }
+      format.json { render json: { data: stats } }
     end
   end
 end

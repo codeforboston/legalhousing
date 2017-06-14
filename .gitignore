@@ -44,7 +44,6 @@ bower.json
 
 # Ignore data files
 *.json
-*.csv
 
 #ignore analysis files
 analysis/rentalflags.sas7bdat

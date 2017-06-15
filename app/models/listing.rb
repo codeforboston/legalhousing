@@ -5,7 +5,7 @@ class Listing < ApplicationRecord
   def illegal?
     Phrase.all.each do |phrase|
       if self.description.match(/#{phrase.content}/i)
-				PhraseListing.create(listing_id: self.id, phrase_id: phrase.id)				
+				PhraseListing.find_or_create_by(listing_id: self.id, phrase_id: phrase.id)				
 				self.save
         return true
       end

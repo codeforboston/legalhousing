@@ -17,4 +17,12 @@ class Phrase < ApplicationRecord
     Phrase.destroy_all
 		ActiveRecord::Base.connection.reset_pk_sequence!('phrases')
   end
+
+	def self.phrase_counts
+		counts = {}
+		PhraseListing.all.each do |phrase_listing|
+			counts[phrase_listing.phrase.content] = PhraseListing.all.where(phrase_id: phrase_listing.phrase_id).count
+		end
+		counts
+	end
 end

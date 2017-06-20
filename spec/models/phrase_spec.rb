@@ -17,9 +17,10 @@ RSpec.describe Phrase, type: :model do
   end
 
   it 'imports the app/assets/Words.txt file' do 
+		wordsfile = File.join Rails.root, "./assets/Words.txt"
+    wordscount = CSV.read(wordsfile)[0].count
     Phrase.reset_phrases
     Phrase.import_words
-
-    expect(Phrase.count).to eq(40)
+    expect(Phrase.count).to eq(wordscount)
   end
 end

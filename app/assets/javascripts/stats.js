@@ -9,10 +9,17 @@ var getStats = function(){
     async: false,
     dataType: 'json',
     success: function(data){
-      console.log(data);
+      // console.log(data);
+      displayStats(data);
     },
     failure: function(result){
       alert('ERROR');
     }
   });
 };
+
+function displayStats(stats) {
+  console.log(stats);
+  document.getElementById("num_list").innerHTML = stats.data.num_listings;
+  document.getElementById("num_disc").innerHTML = stats.data.num_discriminatory;
+}

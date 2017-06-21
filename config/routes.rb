@@ -6,4 +6,5 @@ Rails.application.routes.draw do
   get '/visualization', to: 'listings#visualization'
   post '/tools/stats', to: 'stats#get_stats'
   get '/tools/stats', to: 'stats#index'
+  get '/tools/trackchanges', to: 'trackchanges#index'
 end

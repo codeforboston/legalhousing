@@ -24,6 +24,10 @@ Near Temple,4/22/2017,4/22/2017
 Newlyweds,4/22/2017,4/22/2017
 Newlywed, 4/22/2017,4/22/2017
 No AIDS,4/22/2017,4/22/2017
+<<<<<<< 3441c2f33f80f44a1df46a5d8bd44ebcf5fbffdc
+=======
+No Alcoholic[s]+,4/22/2017,4/22/2017
+>>>>>>> Add missing bad_words.csv so db:seed can run
 No Alcoholics,4/22/2017,4/22/2017
 No Blacks,4/22/2017,4/22/2017
 No Blacks,4/22/2017,4/22/2017

@@ -8,12 +8,28 @@
     <%= javascript_include_tag 'application' %>
   </head>
 
-  <body>
-  <div class="navbar">
-    <ul class="nav navbar-nav">
-      <li><%= link_to "Home", root_path %></li>
-    </ul>
-  </div>
-    <%= yield %>
-  </body>
+<body>
+  <p class="notice"><%= notice %></p>
+  <p class="alert"><%= alert %></p>
+
+  <header class="navbar  navbar-inverse navbar-fixed-top">
+    <div class="navbar-class">
+      <div class="container">
+
+
+      <!-- Collect the nav links, forms, and other content for toggling -->
+
+        <ul class="nav navbar-nav">
+          <li class="active"><a href="/">Home</a></li>
+          <li class="active"><a href="listings">All Listings</a></li>
+          <li class="active"><a href="discriminatory">Discriminatory Listings</a></li>
+        </ul>
+
+
+      </div>
+    </div>
+  </header>
+<%= yield %>
+
+</body>
 </html>

@@ -20,4 +20,23 @@ namespace :classify_listings do
     end
   end
 
+  desc 'Check percentage of listings that are discriminatory'
+  task check_percent: :environment do
+      @count = 0
+      @percent_array = Array.new(101, 0)
+      Listing.all.each do |listing|
+        Phrase.all.each do |phrase|
+          if listing.description.match(/#{phrase.content}/i)
+              puts "made it to the if statement"
+              @count += 1
+          end
+        end
+        puts "out of if statement"
+        @percent_array[@count] += 1
+        @count = 0
+        puts "made it through one listing"
+      end
+      puts "#{@percent_array}"
+  end
+
 end

@@ -7,4 +7,5 @@ Rails.application.routes.draw do
   post '/tools/stats', to: 'stats#get_stats'
   get '/tools/stats', to: 'stats#index'
   get '/tools/trackchanges', to: 'trackchanges#index'
+  post '/tools/trackchanges', to: 'trackchanges#get_changes'
 end

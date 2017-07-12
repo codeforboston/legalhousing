@@ -46,4 +46,6 @@ class StatsController < ApplicationController
       format.json { render json: { data: stats } }
     end
   end
+
+
 end

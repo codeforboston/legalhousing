@@ -47,8 +47,5 @@ class StatsController < ApplicationController
     end
   end
 
-  def track_changes
-      
-  end
 
 end

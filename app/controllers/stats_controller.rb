@@ -46,4 +46,9 @@ class StatsController < ApplicationController
       format.json { render json: { data: stats } }
     end
   end
+
+  def track_changes
+      
+  end
+
 end

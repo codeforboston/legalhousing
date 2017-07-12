@@ -1,4 +1,3 @@
-# require 'Date'
 # stats controller
 class StatsController < ApplicationController
   # @@cashedStats = {}
@@ -13,17 +12,25 @@ class StatsController < ApplicationController
     @stats
   end
 
-  def index
-  end
+  def index; end
 
   def get_stats
     token = params[:token]
-    # token.slice! 'm'
-    end_date = Date::today
-    start_date = end_date << 3
+
+    token.slice! 'm' if token == '1m' || token == '3m' || token == '6m'
+
+    token = '12' if token == '1y'
+
+    token = '60' if token == '5y'
+
+    end_date = Date.today
+    start_date = end_date << token.to_i
+
+    start_date = '2015-01-01' if token == 'all'
+
     listings = Listing.date_range( start_date.to_s, end_date.to_s )
     stats = ''
-    
+
     # check if token exists in hash
     # if @@cashedStats.key?(token)
       # if yes, return the value

@@ -2,22 +2,27 @@
 // All this logic will automatically be available in application.js.
 
 var getStats = function(){
-  $.ajax({
-    type: 'POST',
-    url: '/tools/stats.json',
-    data: {token: "3m"},
-    async: false,
-    dataType: 'json',
-    success: function(data){
-      // console.log(data);
-      displayStats(data);
-    },
-    failure: function(result){
-      alert('ERROR');
-    }
-  });
+  var e = document.getElementById('date_range');
+  var dateRange = e.options[e.selectedIndex].value;
+  getStatsApi(dateRange);
 };
 
+function getStatsApi(dateRange)
+ {
+   $.ajax({
+     type: 'POST',
+     url: '/tools/stats.json',
+     data: {token: dateRange},
+     async: false,
+     dataType: 'json',
+     success: function(data){
+       displayStats(data);
+     },
+     failure: function(result){
+       alert('ERROR');
+     }
+   });
+ }
 function displayStats(stats) {
   console.log(stats);
   document.getElementById("num_list").innerHTML = stats.data.num_listings;

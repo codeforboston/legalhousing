@@ -1,5 +1,4 @@
-
-<select>
+<select id = 'date_range'>
   <option value = "1m">1 month</option>
   <option value = "3m">3 months</option>
   <option value = "6m">6 months</option>
@@ -9,4 +8,11 @@
 </select>
 
 <button onclick="getStats()">Apply</button>
-<button onclick="trackChanges()">click me</button>
+
+<br>
+<br>
+
+<div class="displayStats">
+  <label>Total number of listings: </label><div id="num_list"></div>
+  <label>Number of discriminatory listings: </label><div id="num_disc"></div>
+</div>

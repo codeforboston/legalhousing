@@ -56,3 +56,5 @@ analysis/database.ini
 analysis/getListings.py
 analysis/include/
 analysis/lib/
+
+.DS_Store

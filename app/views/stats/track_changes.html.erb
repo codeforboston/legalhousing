@@ -1,0 +1,10 @@
+<form action="/tools/track_changes" method="POST">
+ first date range:   <input type="date" name="first_date">
+<br>
+ second date range:  <input type="date" name="second_date">
+<br>
+ phrase selection:
+    <%= collection_select(:phrase, :content, Phrase.all, :id, :content) %>
+ <br>
+ time duration
+</form>

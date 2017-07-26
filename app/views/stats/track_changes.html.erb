@@ -1,10 +1,22 @@
-<form action="/tools/track_changes" method="POST">
- first date range:   <input type="date" name="first_date">
-<br>
- second date range:  <input type="date" name="second_date">
-<br>
- phrase selection:
-    <%= collection_select(:phrase, :content, Phrase.all, :id, :content) %>
- <br>
+<form class="form-horizontal" action="/tools/track_changes" method="POST">
+  <div class="form-group">
+    <label class="control-label col-sm-2" for="first_date">first date range:</label>
+    <div class="col-xs-2">
+      <input type="date" class="form-control" name="first_date">
+    </div>
+  </div>
+  <div class="form-group">
+    <label class="control-label col-sm-2" for="second_date">second date range:</label>
+    <div class="col-xs-2">
+      <input type="date" class="form-control" name="second_date">
+    </div>
+  </div>
+  <div class="form-group">
+    <label class="control-label col-sm-2" for="phrase_content">
+      phrase selection:</label>
+    <div class="col-xs-2">
+    <%= collection_select(:phrase, :content, Phrase.all, :content, :content,{}, {class:'form-control'}) %>
+    </div>
+  </div>
  time duration
 </form>

@@ -1,14 +1,30 @@
 <form class="form-horizontal" action="/tools/track_changes" method="POST">
-  <div class="form-group">
-    <label class="control-label col-sm-2" for="first_date">first date range:</label>
+  <div class="row">
     <div class="col-xs-2">
-      <input type="date" class="form-control" name="first_date">
+    </div>
+    <div class="col-xs-2">
+      <label class="control-label" for="d1_start">start date</label>
+    </div>
+    <div class="col-xs-2">
+      <label class="control-label" for="d1_end">end date</label>
+    </div>
+  </div>
+  <div class="form-group">
+    <label class="control-label col-sm-2">first date range:</label>
+    <div class="col-xs-2">
+      <input type="date" class="form-control" name="d1_start">
+    </div>
+    <div class="col-xs-2">
+      <input type="date" class="form-control" name="d1_end">
     </div>
   </div>
   <div class="form-group">
     <label class="control-label col-sm-2" for="second_date">second date range:</label>
     <div class="col-xs-2">
-      <input type="date" class="form-control" name="second_date">
+      <input type="date" class="form-control" name="d2_start">
+    </div>
+    <div class="col-xs-2">
+      <input type="date" class="form-control" name="d2_end">
     </div>
   </div>
   <div class="form-group">
@@ -18,5 +34,4 @@
     <%= collection_select(:phrase, :content, Phrase.all, :content, :content,{}, {class:'form-control'}) %>
     </div>
   </div>
- time duration
 </form>

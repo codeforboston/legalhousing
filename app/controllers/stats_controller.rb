@@ -37,7 +37,7 @@ class StatsController < ApplicationController
     end
   end
 
-  #private
+  private
 
   def compute_stats(start_date_input, end_date_input)
     # Listing.date_range requires strings. Convert here if a Date object was passed in

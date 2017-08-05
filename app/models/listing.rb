@@ -43,14 +43,14 @@ class Listing < ApplicationRecord
 
 # default values for dates, if none are passed in
 # format for date arguments: 'yyyy-mm-dd', or any portion of a date starting with 'yyyy'
-	def self.date_range(start_date_str='2000-2-1', end_date_str='')
+  def self.date_range(start_date_str='2000-2-1', end_date_str='')
     start_date = Date.parse(start_date_str)
     end_date = Date.parse(end_date_str)
 		@listings_in_range = []
-		PhraseListing.all.each do |phrase_listing|
-			listed = phrase_listing.listing.listed_at
+		Listing.all.each do |phrase_listing|
+			listed = phrase_listing.listed_at
 			if listed >= start_date && listed <= end_date
-				@listings_in_range.push(phrase_listing.listing)
+				@listings_in_range.push(phrase_listing)
 			end
 		end
 		@listings_in_range

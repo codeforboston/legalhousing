@@ -33,6 +33,7 @@ gem 'will_paginate', '~> 3.1.0'
 
 gem 'bootstrap-sass', '~> 3.3.7'
 gem 'autoprefixer-rails'
+gem 'pry-rails'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
@@ -52,7 +53,7 @@ end
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 group :development, :test do
-  gem 'pry-rails'
+  
   gem 'pry-byebug'
   gem 'rspec-rails'
   gem 'rails-controller-testing'

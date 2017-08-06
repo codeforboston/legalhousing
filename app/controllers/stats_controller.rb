@@ -1,35 +1,79 @@
 # stats controller
+require "json"
+
 class StatsController < ApplicationController
-  # @@cashedStats = {}
+  @@cachedStats = Hash.new
 
   def index; end
 
   def get_stats
     token = params[:token]
 
-    token.slice! 'm' if token == '1m' || token == '3m' || token == '6m'
+    bNeedsCacheRefresh = true
 
-    token = '12' if token == '1y'
+    # Almost all of the time the token will be in the cache
+    if(@@cachedStats.key?(token))
+      cachedObject = @@cachedStats[token]
+      lastCacheRefresh = cachedObject["timestamp"]
 
-    token = '60' if token == '5y'
+      # Do a check to see how may days it has been since last time
+      # the cache has been refreshed
+      timeInterval = ((Time.now - lastCacheRefresh) / 1.day).round
 
-    end_date = Date.today
-    start_date = end_date << token.to_i
-
-    start_date = '2015-01-01' if token == 'all'
-
+      # If it has been more than a day refresh the cache
+      if(timeInterval <= 0)
+        bNeedsCacheRefresh = false
+      end
+    end
     
     stats = ''
 
-    # check if token exists in hash
-    # if @@cashedStats.key?(token)
-      # if yes, return the value
-      # stats = @@cashedStats[token]
-    # else, compute the value., add it to hash, return it
-    # else
+    if(bNeedsCacheRefresh)
+
+      numMonths = 0
+
+      # Convert the token into a number of months
+      case token
+      when '1m'
+        iNumMonths = 1
+      when '3m'
+        iNumMonths = 3
+      when '6m'
+        iNumMonths = 6
+      when '1y'
+        iNumMonths = 12
+      when '5y'
+        iNumMonths = 60
+      when "all"
+        # We want to special case all listings because it's going to be a
+        # static date and not offset from todays date
+        iNumMonths = -1
+      else
+        puts("token " + token + " not reconised")
+      end
+
+      # We are always going to be computing the stats
+      # based off the current date going back in time
+      end_date = Date.today
+
+      if(iNumMonths != -1)
+        start_date = end_date - iNumMonths.month
+      else
+        # Is is an arbatrary date
+        start_date = '2010-01-01'
+      end
+
+      puts("Search from " + start_date.to_s + " to " + end_date.to_s)
+    
+      puts("Rebuilding cache for " + token + " at" + Time.now.to_s)
+
+      # Create the stats from the dates we have computed
       stats = compute_stats(start_date, end_date)
-      # @@cachedStats[token] = stats
-    # end
+      @@cachedStats[token] = { "timestamp" => Time.now, "data" => stats }
+    else
+      cachedObject = @@cachedStats[token]
+      stats = cachedObject['data']
+    end
 
     respond_to do |format|
       format.html

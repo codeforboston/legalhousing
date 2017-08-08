@@ -2,7 +2,6 @@ class TrackchangesController < ApplicationController
 
     def get_changes
         date1_start, date1_end, date2_start, date2_end, phrase = track_changes_params
-
         date_range_listings_1 = get_filtered_listings(date1_start, date1_end, phrase)
         date_range_listings_2 = get_filtered_listings(date2_start, date2_end, phrase)
 
@@ -20,7 +19,8 @@ class TrackchangesController < ApplicationController
 private
 
     def track_changes_params
-        params.require([:d1_start, :d1_end, :d2_start, :d2_end, :phrase])
+
+        params.require([:d1_start, :d1_end, :d2_start, :d2_end, [:phrase][:content]])
     end
 
     def get_filtered_listings(date_start, date_end, phrase)

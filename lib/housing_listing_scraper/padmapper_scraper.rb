@@ -33,6 +33,6 @@ class PadmapperScraper < ListingScraper
     end
 
     def get_site_name()
-        return "Paddmaper"
+        "Padmapper"
     end
 end

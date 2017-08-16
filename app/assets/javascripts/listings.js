@@ -24,11 +24,11 @@ function drawPieChart(data){
   var groupedData = [
     {
       label: "Discriminatory (" + discriminatoryPercent + ")",
-      size: discriminatoryData.length
+      size: discriminatoryCount
     },
     {
       label: "Non-Discriminatory (" + nonDiscriminatoryPercent + ")",
-      size: data.length - discriminatoryData.length
+      size: nonDiscriminatoryCount
     }
   ];
   d3plus.viz()

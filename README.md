@@ -6,7 +6,7 @@
 Currently we have a basic rails app up and running with a small sample dataset of Craigslist postings.
 
 ## Purpose of the App
-The purpose of the app is to search housing listings in the Boston area to find discriminatory postings. 
+The purpose of the app is to search housing listings in the Boston area to find discriminatory postings.
 
 ## How to Contribute
 If you wish to contribute to the project please read this README and follow the getting started instructions.
@@ -18,7 +18,9 @@ If you wish to contribute to the project please read this README and follow the 
 4. Set up and populate database
 ```
 $ rails db:migrate
-$ python assets/upload_to_local_db.py 10
+$ python assets/upload_to_local_db.py 1000
+$ rake db:seed
+$ rake classify_listings:initial_set
 ```
 
 ## License

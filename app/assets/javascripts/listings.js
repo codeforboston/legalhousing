@@ -1,4 +1,9 @@
 var loadData = function(){
+  if (!window.d3plus) {
+    console.log("no d3plus");
+    return;
+  }
+
   $.ajax({
     type: 'GET',
     url: '/visualization.json',

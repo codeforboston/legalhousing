@@ -1,0 +1,29 @@
+<div class="Page-Title">Statistics</div>
+
+<div class="form-horizontal">
+  <div class="form-group">
+    <label class="col-xs-3 control-label">Range</label>
+    <div class="col-xs-3 selectContainer">
+      <select class="form-control"  id ='date_range' name="daterange">
+        <option value = "1m">1 month</option>
+        <option value = "3m">3 months</option>
+        <option value = "6m">6 months</option>
+        <option value = "1y">1 year</option>
+        <option value = "5y">5 year</option>
+        <option value = "all">All</option>
+      </select>
+    </div>
+    <button onclick="getStats()">Refresh</button>
+  </div>
+</div>
+
+<br>
+<br>
+
+<div class="displayStats">
+  <label>Total number of listings: </label><div id="num_list"></div>
+  <label>Number of discriminatory listings: </label><div id="num_disc"></div>
+  <label>Phrases count: </label>
+  <ul id="phrase_count_list"></ul>
+
+</div>

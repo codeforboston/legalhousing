@@ -4,6 +4,9 @@
 var getStats = function(){
   var e = document.getElementById('date_range');
   var dateRange = e.options[e.selectedIndex].value;
+  if (!dateRange) {
+    return;
+  }
   getStatsApi(dateRange);
 };
 
@@ -16,8 +19,9 @@ function getStatsApi(dateRange)
      async: false,
      dataType: 'json',
      success: function(data){
-       displayStats(data);
+       //displayStats(data);
        drawPieChart(data);
+       drawBarChart(data);
      },
      failure: function(result){
        alert('ERROR');
@@ -44,14 +48,40 @@ function displayStats(stats) {
   }
 }
 
-function drawPieChart(data){
+function drawPieChart(stats){
   $(function () {
-    const series = _.compact(_.map(data.data.discriminatory_phrase_count, function (count, phrase) {
+    const totalCount = stats.data.num_listings;
+    const discriminatoryCount = stats.data.num_discriminatory;
+    const nonDiscriminatoryCount = totalCount - discriminatoryCount;
+
+    var myChart = Highcharts.chart('pie-chart-container', {
+      chart: {
+        type: 'pie'
+      },
+      credits: {
+        enabled: false
+      },
+      title: {
+        text: 'Statistics'
+      },
+      series: [{
+        data: [
+          { name: 'Discriminatory Listings', y: discriminatoryCount },
+          { name: 'Non-Discriminatory Listings', y: nonDiscriminatoryCount }
+        ]
+      }]
+    });
+  });
+}
+
+function drawBarChart(stats){
+  $(function () {
+    const series = _.compact(_.map(stats.data.discriminatory_phrase_count, function (count, phrase) {
       return { phrase: phrase, count: count };
     }));
     const topPhrases = _.take(_.orderBy(series, ['count'], ['desc']), 20);
 
-    var myChart = Highcharts.chart('container', {
+    var myChart = Highcharts.chart('bar-chart-container', {
       chart: {
         type: 'bar'
       },
@@ -62,7 +92,7 @@ function drawPieChart(data){
         enabled: false
       },
       title: {
-        text: 'Most common phrases'
+        text: 'Most common discriminatory phrases'
       },
       xAxis: {
         categories: _.map(topPhrases, 'phrase')

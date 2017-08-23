@@ -2,6 +2,7 @@
 <html>
   <head>
     <title>HousingDataServer</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highcharts/5.0.14/css/highcharts.css" />
     <%= csrf_meta_tags %>
 
     <%= stylesheet_link_tag    'application', media: 'all' %>
@@ -27,7 +28,7 @@
             <li ><a href="/listings/discriminatory">All Discriminatory</a></li>
           </ul>
         </li>
-        
+
         <li class="dropdown">
           <a class="dropdown-toggle" data-toggle="dropdown" href="#">
             Tools
@@ -42,6 +43,8 @@
       </ul>
     </div>
   </header>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highcharts/5.0.14/highcharts.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.4/lodash.min.js"></script>
 <%= yield %>
 </body>
 </html>

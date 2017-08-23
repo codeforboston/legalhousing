@@ -1,9 +1,6 @@
 // Place all the behaviors and hooks related to the matching controller here.
 // All this logic will automatically be available in application.js.
 
-var trackChanges = function(){
-  
-};
 
 
 
@@ -31,6 +28,7 @@ function getStatsApi(dateRange)
  }
 function displayStats(stats) {
   console.log(stats);
+  console.log("got into stats");
   document.getElementById("num_list").innerHTML = stats.data.num_listings;
   document.getElementById("num_disc").innerHTML = stats.data.num_discriminatory;
 }

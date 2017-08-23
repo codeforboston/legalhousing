@@ -1,11 +1,15 @@
 <div class="Page-Title">Statistics</div>
 
 <div class="form-horizontal">
+  <div class="col-xs-6 col-xs-offset-3">
   <div class="form-group">
-    <label class="col-xs-3 control-label">Range</label>
-    <div class="col-xs-3 selectContainer">
+  <div class="input-group">
+    <span class="input-group-addon">
+      Choose Date Range
+    </span>
+    <div class="selectContainer">
       <select class="form-control" id='date_range' name="daterange">
-        <option value = "">Choose Date Range</option>
+        <option value = ""></option>
         <option value = "1m">1 month</option>
         <option value = "3m">3 months</option>
         <option value = "6m">6 months</option>
@@ -14,7 +18,11 @@
         <option value = "all">All</option>
       </select>
     </div>
-    <button class="btn btn-primary" onclick="getStats()">Query Statistics</button>
+    <span class="input-group-btn">
+      <button class="btn btn-primary" onclick="getStats()">Query Statistics</button>
+    </span>
+  </div>
+  </div>
   </div>
 </div>
 

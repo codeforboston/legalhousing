@@ -1,12 +1,97 @@
-<h1>Listings#show</h1>
-<!-- <p>Find me in app/views/listings/show.html.erb</p> -->
 
-<ul>
-  <li>heading: <%= @listing.heading %></li>
-  <li>listed_at: <%= @listing.listed_at %></li>
-  <li>address: <%= @listing.address %></li>
-  <li>latitude: <%= @listing.latitude %></li>
-  <li>longitude: <%= @listing.longitude %></li>
-  <li>description: <%= @listing.description %></li>
-  <li>discriminatory: <%= @listing.discriminatory %></li>
-</ul>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+  <!-- Basic Page Needs
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <meta charset="utf-8">
+  <title>Legal Housing | Boston</title>
+  <meta name="description" content="">
+  <meta name="author" content="">
+
+  <!-- Mobile Specific Metas
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- FONT
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <link href="//fonts.googleapis.com/css?family=Raleway:400,300,600" rel="stylesheet" type="text/css">
+
+  <!-- CSS
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <link rel="stylesheet" href="css/normalize.css">
+  <link rel="stylesheet" href="css/skeleton.css">
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/bootstrap-table/1.11.1/bootstrap-table.min.css">
+
+
+  <!-- Favicon
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <link rel="icon" type="image/png" href="images/favicon.png">
+
+  <script src="//cdnjs.cloudflare.com/ajax/libs/bootstrap-table/1.11.1/bootstrap-table.min.js" async></script>
+
+</head>
+<body>
+
+  <!-- Primary Page Layout
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <div class="container">
+      <div class="row">
+        <div class="col-sm-12" id="scrape-button">
+          <%= button_to "Run Scraper", scrapers_path, class: 'btn btn-primary btn-block' %>
+        </div>
+      </div>
+      <div class="row">
+        <div id="viz"></div>
+      </div>
+      <div class="row">
+        <div class="col-sm-12">
+          <table class="table" data-toggle="table" data-height="400">
+            <thead>
+              <tr>
+                <th data-sortable="true" class="heading-label">heading</th>
+                <th data-sortable="true" class="date-time-label">listed at</th>
+                <th data-sortable="true" class="address-label">address</th>
+                <th data-sortable="true" class="latitude-label">latitude</th>
+                <th data-sortable="true" class="longitude-label">longitude</th>
+                <th data-sortable="true" class="description-label">description</th>
+              </tr>
+            </thead>
+            <tbody>
+              <% @listings.each do |listing| %>
+                <% if listing.discriminatory == true %>
+                <tr class="housing-column">
+                  <td class="heading-item"><%= link_to listing.heading, listing_path(listing) %></td>
+                  <td class="date-time-item"><%= listing.listed_at %></td>
+                  <td class="address-item"><%= listing.address %></td>
+                  <td class="latitude-item"><%= listing.latitude %></td>
+                  <td class="longitude-item"><%= listing.longitude %></td>
+                  <td class="descriminatory-item"><%= listing.discriminatory %></td>
+                </tr>
+                <% end %>
+              <% end %>
+            </tbody>
+          </table>
+          <%= will_paginate @listings %>
+        </div>
+      </div>
+  </div>
+  <!--
+  <script src="//d3plus.org/js/d3.js"></script>
+  <script src="//d3plus.org/js/d3plus.js"></script>
+
+  <script>
+      var data = <% @listings %;
+      d3plus.viz()
+        .container("#viz")
+        .data(data)
+        .type("pie")
+        .id("name")
+        .size("value")
+        .draw()
+  </script>
+ End Document
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+</body>
+</html>

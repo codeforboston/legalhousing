@@ -12,8 +12,11 @@ class ListingsController < ApplicationController
   end
 
   def show
-    set_listing
-    render_listing_formats
+    @listings = Listing.paginate(:page => params[:page], :per_page => 50)
+    respond_to do |format|
+      format.html
+      format.json {render json: @listings.to_json}
+    end
   end
 
   def edit

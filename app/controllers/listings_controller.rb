@@ -31,6 +31,7 @@ class ListingsController < ApplicationController
   end
 
   def visualization
+      puts "show"
     @listings = Listing.all
     render_listings_formats
   end
@@ -43,6 +44,7 @@ class ListingsController < ApplicationController
 
   def discriminatory
     @listings = Listing.discriminatory
+      binding.pry
     render_listings_formats
   end
 

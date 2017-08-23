@@ -1,4 +1,7 @@
+<<<<<<< Updated upstream
 
+=======
+>>>>>>> Stashed changes
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -36,9 +39,13 @@
 
   <!-- Primary Page Layout
   –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+<<<<<<< Updated upstream
   <div class="Page-Title">Discriminatory Listings</div>
 
   <div class="container">
+=======
+    <div class="container">
+>>>>>>> Stashed changes
       <div class="row">
         <div class="col-sm-12" id="scrape-button">
           <%= button_to "Run Scraper", scrapers_path, class: 'btn btn-primary btn-block' %>
@@ -49,7 +56,11 @@
       </div>
       <div class="row">
         <div class="col-sm-12">
+<<<<<<< Updated upstream
           <table class="table" data-toggle="table" data-height="400">
+=======
+          <table class="table " data-toggle="table">
+>>>>>>> Stashed changes
             <thead>
               <tr>
                 <th data-sortable="true" class="heading-label">heading</th>
@@ -61,14 +72,20 @@
               </tr>
             </thead>
             <tbody>
+<<<<<<< Updated upstream
               <% @listings.each do |listing| %>
                 <% if listing.discriminatory == true %>
+=======
+                <% @listings.each do |listing| %>
+                <% if listing.discriminatory==true %>
+>>>>>>> Stashed changes
                 <tr class="housing-column">
                   <td class="heading-item"><%= link_to listing.heading, listing_path(listing) %></td>
                   <td class="date-time-item"><%= listing.listed_at %></td>
                   <td class="address-item"><%= listing.address %></td>
                   <td class="latitude-item"><%= listing.latitude %></td>
                   <td class="longitude-item"><%= listing.longitude %></td>
+<<<<<<< Updated upstream
                   <td class="descriminatory-item"><%= listing.discriminatory %></td>
                 </tr>
                 <% end %>
@@ -76,6 +93,39 @@
             </tbody>
           </table>
           <%= will_paginate @listings %>
+=======
+                  <td class="description-item"><%= listing.description %></td>
+                </tr>
+                <%end%>
+                <% end %>
+            </tbody>
+          </table>
+            <div class="panel-footer">
+                    <div class="row">
+                        <div class="col col-xs-offset-3 col-xs-6">
+                            <nav aria-label="Page navigation" class="text-center">
+                                <ul class="pagination">
+                                    <li>
+                                        <a href="#" aria-label="Previous">
+                                            <span aria-hidden="true">«</span>
+                                        </a>
+                                    </li>
+                                    <li class="active"><a href="#">1</a></li>
+                                    <li><a href="#">2</a></li>
+                                    <li><a href="#">3</a></li>
+                                    <li><a href="#">4</a></li>
+                                    <li><a href="#">5</a></li>
+                                    <li>
+                                        <a href="#" aria-label="Next">
+                                            <span aria-hidden="true">»</span>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </nav>
+                        </div>
+                    </div>
+                </div>
+>>>>>>> Stashed changes
         </div>
       </div>
   </div>
@@ -97,3 +147,8 @@
   –––––––––––––––––––––––––––––––––––––––––––––––––– -->
 </body>
 </html>
+<<<<<<< Updated upstream
+=======
+
+
+>>>>>>> Stashed changes

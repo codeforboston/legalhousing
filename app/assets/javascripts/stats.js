@@ -17,19 +17,20 @@ function getStatsApi(dateRange)
      dataType: 'json',
      success: function(data){
        displayStats(data);
+       drawPieChart(data);
      },
      failure: function(result){
        alert('ERROR');
      }
    });
  }
-  
+
 function displayStats(stats) {
   console.log(stats);
   document.getElementById("num_list").innerHTML = stats.data.num_listings;
   document.getElementById("num_disc").innerHTML = stats.data.num_discriminatory;
   var phrase_count_list = document.getElementById("phrase_count_list");
-  
+
   // Clear out any old results in the phrase count display
   while (phrase_count_list.firstChild) {
     phrase_count_list.removeChild(phrase_count_list.firstChild);
@@ -41,4 +42,39 @@ function displayStats(stats) {
     entry.appendChild(document.createTextNode(phrase));
     phrase_count_list.appendChild(entry);
   }
+}
+
+function drawPieChart(data){
+  $(function () {
+    const series = _.compact(_.map(data.data.discriminatory_phrase_count, function (count, phrase) {
+      return { phrase: phrase, count: count };
+    }));
+    const topPhrases = _.take(_.orderBy(series, ['count'], ['desc']), 20);
+
+    var myChart = Highcharts.chart('container', {
+      chart: {
+        type: 'bar'
+      },
+      credits: {
+        enabled: false
+      },
+      legend: {
+        enabled: false
+      },
+      title: {
+        text: 'Most common phrases'
+      },
+      xAxis: {
+        categories: _.map(topPhrases, 'phrase')
+      },
+      yAxis: {
+        title: {
+          text: 'Count of discriminatory phrase'
+        }
+      },
+      series: [{
+        data: _.map(topPhrases, 'count')
+      }]
+    });
+  });
 }

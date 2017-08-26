@@ -28,7 +28,6 @@ function getStatsApi(dateRange)
  }
 function displayStats(stats) {
   console.log(stats);
-  console.log("got into stats");
   document.getElementById("num_list").innerHTML = stats.data.num_listings;
   document.getElementById("num_disc").innerHTML = stats.data.num_discriminatory;
 }

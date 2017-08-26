@@ -12,23 +12,27 @@ var getFormData = function(){
     var d2_end = document.getElementById("track-form").elements.namedItem('d2_end').value;
     var phrase = document.getElementById("track-form").elements.namedItem('phrase_content').value;
     
-    dateRange = {
-        d1_start : d1_start,
-        d1_end : d1_end,
-        d2_start : d2_start,
-        d2_end : d2_end,
-        phrase : phrase
-    };
-    console.log(dateRange);
-    callTrackChanges(dateRange);
+    // dateRange = {
+    //     d1_start : d1_start,
+    //     d1_end : d1_end,
+    //     d2_start : d2_start,
+    //     d2_end : d2_end,
+    //     phrase : phrase
+    // };
+    callTrackChanges(d1_start, d1_end, d2_start, d2_end, phrase);
   };
   
-  function callTrackChanges(dateRange)
+  function callTrackChanges(d1_s, d1_e, d2_s, d2_e, phrse)
    {
      $.ajax({
        type: 'POST',
        url: '/tools/trackchanges',
-       data: {token: dateRange},
+       data: {d1_start : d1_s,
+              d1_end : d1_e,
+              d2_start : d2_s,
+              d2_end : d2_e,
+              phrase : phrse 
+        },
        async: false,
        dataType: 'json',
        success: function(data){
@@ -40,7 +44,7 @@ var getFormData = function(){
        }
      });
    }
-  function displayStats(data) {
+  function displayResults(data) {
     console.log(data);
     console.log("getting display");
     // document.getElementById("num_list").innerHTML = stats.data.num_listings;

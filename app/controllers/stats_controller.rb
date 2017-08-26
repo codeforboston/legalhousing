@@ -47,9 +47,4 @@ class StatsController < ApplicationController
     end
   end
 
-  def track_changes
-    @phrases = Phrase.all
-  end
-
-
 end

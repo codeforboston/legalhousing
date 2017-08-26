@@ -49,6 +49,8 @@ var getFormData = function(){
     console.log("getting display");
     // document.getElementById("num_list").innerHTML = stats.data.num_listings;
     // document.getElementById("num_disc").innerHTML = stats.data.num_discriminatory;
-    document.getElementById("results").innerHTML = data
+    document.getElementById("firstRangeResults").innerHTML = data.data.num_listings_1;
+    document.getElementById("secondRangeResults").innerHTML = data.data.num_listings_2;
+    
   }
   

@@ -14,7 +14,7 @@ class PadmapperScraper < ListingScraper
     def get_listing_URLs_from_search_html(search_html)
         doc = Nokogiri::HTML(search_html)
         listing_urls = []
-        doc.css("ol li").each do |item|
+        doc.css("div.address").each do |item|
             relative_url = item.at_css("a")[:href]
             listing_urls.push(PADMAPPER_BASE_URL + relative_url)
         end
@@ -24,7 +24,19 @@ class PadmapperScraper < ListingScraper
     def parse_listing_html(listing_html)
 
         doc = Nokogiri::HTML(listing_html)
-        description = doc.at_css("pre").text
+
+        # Some page types have descriptions in the pre element, others are in a div description class
+        pre_element = doc.at_css("pre")
+        div_description = doc.at_css("div.description")
+        if pre_element
+            description = pre_element.text
+        elsif div_description
+            description = div_description.text
+        else
+            # These seem to be airbnb listings.
+            description = "No description found!"
+        end
+
         address = doc.at("meta[name='place:street_address']")['content']
         zip_code = doc.at("meta[name='place:postal_code']")['content']
         latitude = doc.at("meta[name='place:location:latitude']")['content']
@@ -33,6 +45,6 @@ class PadmapperScraper < ListingScraper
     end
 
     def get_site_name()
-        return "Paddmaper"
+        "Padmapper"
     end
 end

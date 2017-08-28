@@ -1,18 +1,39 @@
-<select id = 'date_range'>
-  <option value = "1m">1 month</option>
-  <option value = "3m">3 months</option>
-  <option value = "6m">6 months</option>
-  <option value = "1y">1 year</option>
-  <option value = "5y">5 year</option>
-  <option value = "all">All</option>
-</select>
+<div class="Page-Title">Statistics</div>
 
-<button onclick="getStats()">Apply</button>
+<div class="form-horizontal">
+  <div class="col-xs-6 col-xs-offset-3">
+  <div class="form-group">
+  <div class="input-group">
+    <span class="input-group-addon">
+      Choose Date Range
+    </span>
+    <div class="selectContainer">
+      <select class="form-control" id='date_range' name="daterange">
+        <option value = ""></option>
+        <option value = "1m">1 month</option>
+        <option value = "3m">3 months</option>
+        <option value = "6m">6 months</option>
+        <option value = "1y">1 year</option>
+        <option value = "5y">5 year</option>
+        <option value = "all">All</option>
+      </select>
+    </div>
+    <span class="input-group-btn">
+      <button class="btn btn-primary" onclick="getStats()">Query Statistics</button>
+    </span>
+  </div>
+  </div>
+  </div>
+</div>
 
 <br>
 <br>
 
-<div class="displayStats">
-  <label>Total number of listings: </label><div id="num_list"></div>
-  <label>Number of discriminatory listings: </label><div id="num_disc"></div>
+<div class="displayStats row">
+  <div class="col-xs-4">
+    <div id="pie-chart-container" style="width:100%; height:600px;"></div>
+  </div>
+  <div class="col-xs-7">
+    <div id="bar-chart-container" style="width:100%; height:600px;"></div>
+  </div>
 </div>

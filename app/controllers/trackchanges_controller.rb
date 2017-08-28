@@ -1,8 +1,8 @@
 class TrackchangesController < ApplicationController
+    skip_before_action :verify_authenticity_token
 
     def get_changes
         date1_start, date1_end, date2_start, date2_end, phrase = track_changes_params
-
         date_range_listings_1 = get_filtered_listings(date1_start, date1_end, phrase)
         date_range_listings_2 = get_filtered_listings(date2_start, date2_end, phrase)
 
@@ -33,5 +33,10 @@ private
         end
         return phrases_found
     end
+
+    def trackform
+        @phrases = Phrase.all
+    end
+    
     
 end

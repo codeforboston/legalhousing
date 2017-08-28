@@ -28,7 +28,7 @@ class Listing < ApplicationRecord
 			listing.illegal?
 		end
 	end
-	
+
   def self.discriminatory
     Listing.all.select {|listing| listing.discriminatory == true}
   end
@@ -36,7 +36,7 @@ class Listing < ApplicationRecord
 	def self.num_listings
 		Listing.all.count
 	end
-	
+
 	def self.num_discriminatory
 		Listing.discriminatory.count
 	end

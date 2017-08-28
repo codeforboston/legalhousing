@@ -52,9 +52,12 @@ class StatsController < ApplicationController
         puts("token " + token + " not reconised")
       end
 
+    listings = Listing.date_range( start_date.to_s, end_date.to_s ).count
+    stats = ''
       # We are always going to be computing the stats
       # based off the current date going back in time
-      end_date = Date.today
+#      end_date = Date.today
+
 
       if(iNumMonths != -1)
         start_date = end_date - iNumMonths.month
@@ -105,5 +108,4 @@ class StatsController < ApplicationController
     }
     @stats
   end
-
 end

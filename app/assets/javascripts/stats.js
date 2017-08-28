@@ -1,6 +1,9 @@
 // Place all the behaviors and hooks related to the matching controller here.
 // All this logic will automatically be available in application.js.
 
+
+
+
 var getStats = function(){
   var e = document.getElementById('date_range');
   var dateRange = e.options[e.selectedIndex].value;

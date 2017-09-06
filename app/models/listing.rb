@@ -61,10 +61,6 @@ class Listing < ApplicationRecord
   private
 
   def check_discriminatory_and_set_flag
-    if illegal?
-      self.discriminatory = true
-    else
-      self.discriminatory = false
-    end
+      self.discriminatory = illegal?
   end
 end

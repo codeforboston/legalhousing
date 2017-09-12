@@ -1,6 +1,8 @@
 class Listing < ApplicationRecord
 	has_many :phrase_listings
-	has_many :phrases, through: :phrase_listings
+  has_many :phrases, through: :phrase_listings
+  
+  before_save :check_discriminatory_and_set_flag
 
   def illegal?
     flag = false
@@ -56,4 +58,9 @@ class Listing < ApplicationRecord
 		@listings_in_range
 	end
 
+  private
+
+  def check_discriminatory_and_set_flag
+      self.discriminatory = illegal?
+  end
 end

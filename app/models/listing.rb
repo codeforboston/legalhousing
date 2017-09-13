@@ -76,10 +76,11 @@ class Listing < ApplicationRecord
   end
 
   def add_phrase_listing_entries
-    found_phrases = find_discriminatory_phrases
-    for phrase in found_phrases do
-      puts "Creating PhraseListing from phrase #{phrase}"
-      PhraseListing.create(listing_id: self.id, phrase_id: phrase.id)
+    if self.discriminatory
+      found_phrases = find_discriminatory_phrases
+      for phrase in found_phrases do
+        PhraseListing.create(listing_id: self.id, phrase_id: phrase.id)
+      end
     end
   end
 

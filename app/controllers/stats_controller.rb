@@ -25,7 +25,7 @@ class StatsController < ApplicationController
         bNeedsCacheRefresh = false
       end
     end
-    
+
     stats = ''
 
     if(bNeedsCacheRefresh)
@@ -52,11 +52,10 @@ class StatsController < ApplicationController
         puts("token " + token + " not reconised")
       end
 
-    listings = Listing.date_range( start_date.to_s, end_date.to_s ).count
     stats = ''
       # We are always going to be computing the stats
       # based off the current date going back in time
-#      end_date = Date.today
+      end_date = Date.today
 
 
       if(iNumMonths != -1)
@@ -67,7 +66,7 @@ class StatsController < ApplicationController
       end
 
       puts("Search from " + start_date.to_s + " to " + end_date.to_s)
-    
+
       puts("Rebuilding cache for " + token + " at" + Time.now.to_s)
 
       # Create the stats from the dates we have computed
@@ -94,13 +93,13 @@ class StatsController < ApplicationController
     @date_filtered_listings = Listing.date_range(start_date, end_date)
     @num_listings = @date_filtered_listings.length
     @num_discriminatory = @date_filtered_listings.count{ |listing| listing.illegal? }
-    
+
     @discriminatory_phrase_count = {}
     Phrase.all.each do |phrase|
       @num_found = @date_filtered_listings.count { |listing| listing.check_phrase(phrase.content) }
       @discriminatory_phrase_count[phrase.content] = @num_found
     end
-    
+
     @stats = {
       num_listings: @num_listings,
       num_discriminatory: @num_discriminatory,

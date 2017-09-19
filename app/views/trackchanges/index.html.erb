@@ -1,1 +1,87 @@
-test
+<div class="Page-Title">Listings Changes</div>
+
+<div class="container">  
+  <form class="form-horizontal" id="track-form">
+    <div class="form-group">
+      <div class="col-sm-2">
+        <label class="control-label" for="d1_start">first date range:</label>
+      </div>
+        <div class="col-sm-5">
+        <input type="date" class="form-control" name="d1_start" placeholder="start date">
+      </div>
+      <div class="col-sm-5">
+        <input type="date" class="form-control span-4" name="d1_end" placeholder="end date">
+      </div>
+    </div>
+    <div class="form-group">
+      <div class="col-sm-2">
+        <label class="control-label" for="d2_start">second date range:</label>
+      </div>
+        <div class="col-sm-5">
+        <input type="date" class="form-control" name="d2_start" placeholder="start date">
+      </div>
+      <div class="col-sm-5">
+        <input type="date" class="form-control" name="d2_end" placeholder="end date">
+      </div>
+    </div>
+    <div class="form-group">
+      <div class="col-sm-2">
+          <label class="control-label" for="phrase_content">
+            phrase selection:</label>
+      </div>
+      <div class="col-sm-5">
+        <%= collection_select(:phrase, :content, Phrase.all, :content, :content,{}, {class:'form-control'}) %>
+      </div>
+      <div class="col-sm-5"></div>
+    </div>
+    <div class="form-group">
+      <div class="col-sm-offset-2 col-sm-10">
+        <button type="button" onclick="getFormData()" class="btn btn-default">Submit</button>
+      </div>
+    </div> 
+  </form>
+</div>
+
+
+<div class="container">
+  <div class="col-sm-12">
+    <div name="firstRange" class="row">
+      <h3>First Date Range</h3>
+      <div class="row-sm-12">
+        <label>Total Listings:</label>
+        <label id="firstRangeResults"></label>
+      </div>
+      <div class="row-sm-12">
+        <label id="firstDiscrimLbl">Total Discriminatory: </label>
+        <label id="firstRangeResultsDiscrim"></label>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-sm-12">  
+    <div class="row">
+    <h3>Second Date Range</h3>
+      <div class="row-sm-12">  
+        <label>Total Listings: </label>
+        <label id="secondRangeResults"></label> 
+      </div>
+      <div class="row-sm-12">
+        <label id="secondDiscrimLbl">Total Discriminatory: </label>
+        <label id="secondRangeResultsDiscrim"></label>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-sm-12">  
+    <div class="row">
+    <h3>Stats</h3>
+      <div class="row-sm-12">  
+        <label>Percent Change in Listings: </label>
+        <label id="ListingsChange"></label> 
+      </div>
+      <div class="row-sm-12">  
+        <label id="statsDiscrimLbl">Percent Change in Discriminatory: </label>
+        <label id="DiscriminatoryChange"></label> 
+      </div>
+  </div>
+</div>

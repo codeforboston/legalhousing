@@ -7,8 +7,10 @@ class TrackchangesController < ApplicationController
         date_range_listings_2 = get_filtered_listings(date2_start, date2_end, phrase)
 
         changes = { 
-            num_listings_1: date_range_listings_1.length,
-            num_listings_2: date_range_listings_2.length
+            num_listings_1: date_range_listings_1[0],
+            num_listings_1_discrim: date_range_listings_1[1],
+            num_listings_2: date_range_listings_2[0],
+            num_listings_2_discrim: date_range_listings_2[1]
         }
         
         respond_to do |format|
@@ -31,7 +33,7 @@ private
                 phrases_found.push(listing)
             end
         end
-        return phrases_found
+        return [date_range_listings.count, phrases_found.length]
     end
 
     def trackform

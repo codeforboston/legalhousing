@@ -12,11 +12,8 @@ class ListingsController < ApplicationController
   end
 
   def show
-    @listings = Listing.paginate(:page => params[:page], :per_page => 50)
-    respond_to do |format|
-      format.html
-      format.json {render json: @listings.to_json}
-    end
+    set_listing
+    render_listing_formats
   end
 
   def edit
@@ -44,7 +41,6 @@ class ListingsController < ApplicationController
 
   def discriminatory
     @listings = Listing.discriminatory
-      binding.pry
     render_listings_formats
   end
 
@@ -70,7 +66,7 @@ class ListingsController < ApplicationController
 
   def render_listings_formats
     respond_to do |format|
-      format.html
+      format.html {render :template => "listings/index"}
       format.json {render json: @listings.to_json}
     end
   end

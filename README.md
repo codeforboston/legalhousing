@@ -17,10 +17,10 @@ If you wish to contribute to the project please read this README and follow the 
 3. Clone the repo to your directory.
 4. Set up and populate database
 ```
-$ rails db:migrate
-$ python assets/upload_to_local_db.py 1000
-$ rake db:seed
-$ rake classify_listings:initial_set
+rails db:
+python assets/upload_to_local_db.py 1000
+rake db:seed
+rake classify_listings:initial_set
 ```
 
 ## License

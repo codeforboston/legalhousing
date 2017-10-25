@@ -15,13 +15,13 @@
 @import "bootstrap";
 
 .Page-Title {
-    font-size:30px;
-    font-weight:bold;
-    text-align:center;
+  font-size:30px;
+  font-weight:bold;
+  text-align:center;
 }
 
 .panel-footer {
-    background-color: white;
+  background-color: white;
 }
 
 .contact-header {
@@ -30,4 +30,13 @@
 
 .questions {
   margin-left: 10%;
+}
+
+#map_wrapper {
+  height: 400px;
+}
+
+#map_canvas {
+  width: 100%;
+  height: 100%;
 }

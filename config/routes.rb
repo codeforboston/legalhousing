@@ -10,4 +10,5 @@ Rails.application.routes.draw do
   post '/tools/trackchanges', to: 'trackchanges#get_changes'
   get '/tools/trackform', to: 'trackchanges#trackform'
   get '/Contact', to: 'contacts#index'
+  post '/mappoints', to: 'listings#get_map_points'
 end

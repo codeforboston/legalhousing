@@ -3,6 +3,33 @@ require 'pry'
 class ListingsController < ApplicationController
   skip_before_action :verify_authenticity_token
 
+  def get_map_points
+    map_points = [{lat:42.3601, long:-71.0589}]
+
+    @listings = Listing.all
+
+    @listings.each do |point|
+      array = []
+
+      if point.latitude.to_f > 41.6821 &&
+        point.latitude.to_f < 42.9337 &&
+        point.longitude.to_f < -69.9598 &&
+        point.longitude.to_f > -72.2781
+
+        array << point.address
+        array << point.latitude
+        array << point.longitude
+      end
+
+      map_points << array
+    end
+
+    respond_to do |format|
+      format.html
+      format.json { render json: { data: map_points } }
+    end
+  end
+
   def index
     @listings = Listing.paginate(:page => params[:page], :per_page => 50)
     respond_to do |format|
@@ -44,7 +71,6 @@ class ListingsController < ApplicationController
 
   def discriminatory
     @listings = Listing.discriminatory
-      binding.pry
     render_listings_formats
   end
 
@@ -74,5 +100,4 @@ class ListingsController < ApplicationController
       format.json {render json: @listings.to_json}
     end
   end
-
 end

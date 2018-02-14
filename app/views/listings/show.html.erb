@@ -1,99 +1,15 @@
-  <!-- Primary Page Layout
-  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
-
-  <div class="page-title">Discriminatory Listings</div>
-
-  <div class="container">
-    <div class="container">
-      <div class="row">
-        <div class="col-sm-12" id="scrape-button">
-          <%= button_to "Run Scraper", scrapers_path, class: 'btn btn-primary btn-block' %>
-        </div>
-      </div>
-      <div class="row">
-        <div id="viz"></div>
-      </div>
-      <div class="row">
-        <div class="col-sm-12">
-          <table class="table" data-toggle="table" data-height="400">
-          <table class="table " data-toggle="table">
-            <thead>
-              <tr>
-                <th data-sortable="true" class="heading-label">heading</th>
-                <th data-sortable="true" class="date-time-label">listed at</th>
-                <th data-sortable="true" class="address-label">address</th>
-                <th data-sortable="true" class="latitude-label">latitude</th>
-                <th data-sortable="true" class="longitude-label">longitude</th>
-                <th data-sortable="true" class="description-label">description</th>
-              </tr>
-            </thead>
-            <tbody>
-              <% @listings.each do |listing| %>
-                <% if listing.discriminatory == true %>
-                <% @listings.each do |listing| %>
-                <% if listing.discriminatory==true %>
-                <tr class="housing-column">
-                  <td class="heading-item"><%= link_to listing.heading, listing_path(listing) %></td>
-                  <td class="date-time-item"><%= listing.listed_at %></td>
-                  <td class="address-item"><%= listing.address %></td>
-                  <td class="latitude-item"><%= listing.latitude %></td>
-                  <td class="longitude-item"><%= listing.longitude %></td>
-                  <td class="descriminatory-item"><%= listing.discriminatory %></td>
-                </tr>
-                <% end %>
-              <% end %>
-            </tbody>
-          </table>
-          <%= will_paginate @listings %>
-                  <td class="description-item"><%= listing.description %></td>
-                </tr>
-                <%end%>
-                <% end %>
-            </tbody>
-          </table>
-            <div class="panel-footer">
-                    <div class="row">
-                        <div class="col col-xs-offset-3 col-xs-6">
-                            <nav aria-label="Page navigation" class="text-center">
-                                <ul class="pagination">
-                                    <li>
-                                        <a href="#" aria-label="Previous">
-                                            <span aria-hidden="true">«</span>
-                                        </a>
-                                    </li>
-                                    <li class="active"><a href="#">1</a></li>
-                                    <li><a href="#">2</a></li>
-                                    <li><a href="#">3</a></li>
-                                    <li><a href="#">4</a></li>
-                                    <li><a href="#">5</a></li>
-                                    <li>
-                                        <a href="#" aria-label="Next">
-                                            <span aria-hidden="true">»</span>
-                                        </a>
-                                    </li>
-                                </ul>
-                            </nav>
-                        </div>
-                    </div>
-                </div>
-        </div>
-      </div>
-  </div>
-
-  <!--
-  <script src="//d3plus.org/js/d3.js"></script>
-  <script src="//d3plus.org/js/d3plus.js"></script>
-
-  <script>
-      var data = <% @listings %;
-      d3plus.viz()
-        .container("#viz")
-        .data(data)
-        .type("pie")
-        .id("name")
-        .size("value")
-        .draw()
-  </script>
-
- End Document
-  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+<div class="page-title">Discriminatory Listings</div>
+<h3>Single listing </h3>
+<div class="container">
+		<% if @listing.discriminatory %>
+			<h3> this listing is DISCRIMINATORY! </h3>
+		<% end %>
+		<p>id: <%= @listing.id %></p>
+		<p>listed_at: <%= @listing.listed_at %></p>
+		<p>address: <%= @listing.address %></p>
+		<p>latitude: <%= @listing.latitude %></p>
+		<p>longitude: <%= @listing.longitude %></p>
+		<p>heading: <%= @listing.heading%></p>
+		<p>description: <%= @listing.description %></p>
+		<p>discriminatory: <%= @listing.discriminatory %></p>
+</div>

@@ -1,11 +1,13 @@
-
 <div class="container">
   <div class="row">
-    <div class="col-sm-12" id="scrape-button">
-      <%= button_to "Run Scraper", scrapers_path, class: 'btn btn-primary btn-block' %>
-    </div>
-  </div>
-
+		<div class="col-sm-2">
+			<form class="form-horizontal" id="phrase">
+				<%= collection_select(:phrase, :content, Phrase.all, :content, :content,{}, {class:'form-control'}) %>
+				<button onclick="getDataByPhrase()" class="btn btn-default">Search listings</button>
+			</form>
+		</div>
+  </form>
+</div>
   <div class="row">
     <div class="col-sm-12">
       <table class="table" data-toggle="table" >
@@ -60,8 +62,7 @@
           </div>
         </div>
       </div>
-
-    </div>
-
+		</div>
+		
   </div>
 </div>

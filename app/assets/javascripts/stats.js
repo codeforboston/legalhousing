@@ -2,8 +2,6 @@
 // All this logic will automatically be available in application.js.
 
 
-
-
 var getStats = function(){
   var e = document.getElementById('date_range');
   var dateRange = e.options[e.selectedIndex].value;
@@ -15,9 +13,10 @@ var getStats = function(){
 
 function getStatsApi(dateRange)
  {
+   console.log(dateRange)
    $.ajax({
      type: 'POST',
-     url: '/tools/stats.json',
+     url: '/tools/stats',
      data: {token: dateRange},
      async: false,
      dataType: 'json',
@@ -33,7 +32,7 @@ function getStatsApi(dateRange)
  }
 
 function displayStats(stats) {
-  console.log(stats);
+
   document.getElementById("num_list").innerHTML = stats.data.num_listings;
   document.getElementById("num_disc").innerHTML = stats.data.num_discriminatory;
   var phrase_count_list = document.getElementById("phrase_count_list");
@@ -53,6 +52,7 @@ function displayStats(stats) {
 
 function drawPieChart(stats){
   $(function () {
+
     const totalCount = stats.data.num_listings;
     const discriminatoryCount = stats.data.num_discriminatory;
     const nonDiscriminatoryCount = totalCount - discriminatoryCount;
@@ -66,6 +66,9 @@ function drawPieChart(stats){
       },
       title: {
         text: 'Statistics'
+      },
+      tooltip: {
+        pointFormat: "Value: {point.y:.0f}"
       },
       series: [{
         data: [

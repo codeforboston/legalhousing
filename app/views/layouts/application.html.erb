@@ -27,18 +27,9 @@
      <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <!-- Collect the nav links, forms, and other content for toggling -->
       <ul class="nav navbar-nav">
-        <li ><a href="/">Home</a></li>
-         <li class="dropdown">
-          <a class="dropdown-toggle" data-toggle="dropdown" href="#">
-            Listings
-            <span class="caret"></span>
-          </a>
-          <ul class="dropdown-menu">
-            <li ><a href="/listings">All Listings</a></li>
-            <li ><a href="/discriminatory">All Discriminatory</a></li>
-          </ul>
-        </li>
-
+        <li ><%= link_to "Home", root_path %></li>
+				<li ><%= link_to "All Listings", listings_path %></li>
+				<li ><%= link_to "Discriminatory", discriminatory_path %></li>
         <li class="dropdown">
           <a class="dropdown-toggle" data-toggle="dropdown" href="#">
             Tools

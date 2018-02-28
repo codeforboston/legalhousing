@@ -9,6 +9,18 @@ class Listing < ApplicationRecord
     return self.discriminatory
   end
 
+	def self.get_filtered_listings(phrase)
+		@filtered_listings = []
+		Listing.all.each do |listing|
+			if listing.check_phrase(phrase)
+				@filtered_listings.push(listing)
+			end
+		end
+		puts '------------------------------------------------------------------'
+		puts "#{@filtered_listings.count} listings counted for phrase: #{phrase}"
+		puts '------------------------------------------------------------------'
+		@filtered_listings
+	end
 
   def check_phrase(phrase)
     regex = phrase.strip.gsub(' ','\s+')

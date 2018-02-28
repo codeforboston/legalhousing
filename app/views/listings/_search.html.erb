@@ -1,0 +1,5 @@
+<%= form_for @phrase, url: {action: "search"} do |f| %>
+	<%= f.text_field :phrase %>
+	<%= f.submit value='Search' %>
+<% end %> 
+ 

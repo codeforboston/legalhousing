@@ -1,0 +1,4 @@
+<%= form_for @phrase, url: {action: "filter"} do |f| %>
+	<%= f.collection_select(:phrase_id, phrases, :id, :content) %>
+	<%= f.submit value='Filter' %>
+<% end %>

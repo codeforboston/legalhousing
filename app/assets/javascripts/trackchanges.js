@@ -1,24 +1,6 @@
 // Place all the behaviors and hooks related to the matching controller here.
 // All this logic will automatically be available in application.js.
 
-var getDataByPhrase = () => {
-	var phrase = document.getElementById("phrase")[0].value;
-	console.log('[getDataByPhrase]', phrase);
-	$.ajax({
-		type: 'GET',
-		url: '/listings_filtered',
-		data: phrase,
-		dataType: 'json',
-		success: function (response) {
-			displayResults(response);
-			console.log('[response filtered]', response)
-		},
-		failure: function (result) {
-			alert('ERROR')
-		}
-	});
-};
-
 var getFormData = function () {
 	console.log("got into form data");
 	var d1_start = document.getElementById("track-form").elements.namedItem("d1_start").value;;

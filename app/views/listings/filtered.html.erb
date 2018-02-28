@@ -1,20 +1,12 @@
 <div class="container">
   <div class="row">
-		<div class="col-sm-4">
-			<%= render partial: 'listings/filter', locals: { filter_phrase: @filter_phrase, phrases: @phrases } %>
-		</div>
-		<div class="col-sm-4">
-			<%= render partial: 'listings/search', locals: { search_phrase: @search_phrase } %>
-		</div>
-		</div>
-		<hr>
-  </form>
-</div>
-  <div class="row">
-    <div class="col-sm-12">
-      <table class="table" data-toggle="table" >
+		<div class="col-sm-12">
+			<h3 class='results'>Returned listings count: <%= @listings.count %>, for phrase: <%= @phrase %></h3>
+  		<hr />
+			<table class="table" data-toggle="table" >
         <thead>
           <tr>
+            <th data-sortable="true" class="heading-label">id</th>
             <th data-sortable="true" class="heading-label">heading</th>
             <th data-sortable="true" class="date-time-label">listed at</th>
             <th data-sortable="true" class="address-label">address</th>
@@ -27,6 +19,7 @@
         <tbody>
           <% @listings.each do |listing| %>
             <tr class="housing-column">
+              <td class="heading-item"><%= listing.id %></td>
               <td class="heading-item"><%= link_to listing.heading, listing_path(listing) %></td>
               <td class="date-time-item"><%= listing.listed_at %></td>
               <td class="address-item"><%= listing.address %></td>
@@ -38,7 +31,6 @@
           <% end %>
         </tbody>
       </table>
-
       <div class="panel-footer">
         <div class="row">
           <div class="col col-xs-offset-3 col-xs-6">
@@ -65,6 +57,5 @@
         </div>
       </div>
 		</div>
-		
   </div>
 </div>

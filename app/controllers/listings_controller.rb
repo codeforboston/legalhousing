@@ -6,6 +6,7 @@ class ListingsController < ApplicationController
   def index
 		@listings = Listing.paginate(:page => params[:page], :per_page => 50)
 		@phrases = Phrase.all
+		@phrase = 'temp'
     respond_to do |format|
       format.html
       format.json {render json: @listings.to_json}
@@ -41,24 +42,29 @@ class ListingsController < ApplicationController
   end
 
   def discriminatory
-    @listings = Listing.discriminatory
+		@listings = Listing.discriminatory
+		@phrases = Phrase.all
+		@phrase = 'temp'
     render_listings_formats
   end
-
-	def filtered
-		@listings = Listing.paginate(:page => params[:page], :per_page => 50)
-    respond_to do |format|
-      format.html
-      format.json {render json: @listings.to_json}
-    end
+	
+	def filter
+		@phrase =  Phrase.find_by_id(params[:temp][:phrase_id].to_i).content
+		@listings = Listing.get_filtered_listings(@phrase)
+		render :template => "listings/filtered"
+	end
+	
+	def search
+		@phrase = params[:temp][:phrase]
+		@listings = Listing.get_filtered_listings(@phrase)
+		render :template => "listings/filtered"
 	end
 	
   def home
   end
 
   private
-
-  def listing_params
+	def listing_params
     params.require(:listing).permit(:id, :address, :listed_at, :latitude, :longitude, :description, :discriminatory, :heading)
   end
 
@@ -79,5 +85,4 @@ class ListingsController < ApplicationController
       format.json {render json: @listings.to_json}
     end
   end
-
 end

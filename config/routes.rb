@@ -3,7 +3,11 @@ Rails.application.routes.draw do
   root to: "listings#home"
 	resources :listings, :phrases
 	
-	get '/listings_filtered', to: 'listings#filtered'
+	post '/listings_filter', to: 'listings#filter'
+	get '/listings_filter', to: 'listings#filter'
+	
+	post '/listings_search', to: 'listings#search'
+	get '/listings_search', to: 'listings#search'
 	
   get '/discriminatory', to: 'listings#discriminatory'
   get '/visualization', to: 'listings#visualization'

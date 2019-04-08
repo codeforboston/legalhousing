@@ -31,7 +31,6 @@ class StatsController < ApplicationController
     if(bNeedsCacheRefresh)
 
       numMonths = 0
-
       # Convert the token into a number of months
       case token
       when '1m'
@@ -94,17 +93,17 @@ class StatsController < ApplicationController
     @num_listings = @date_filtered_listings.length
     @num_discriminatory = @date_filtered_listings.count{ |listing| listing.illegal? }
 
-    @discriminatory_phrase_count = {}
-    Phrase.all.each do |phrase|
-      @num_found = @date_filtered_listings.count { |listing| listing.check_phrase(phrase.content) }
-      @discriminatory_phrase_count[phrase.content] = @num_found
-    end
+    @discriminatory_phrase_count = Phrase.joins(:listings)
+                  .where('listings.listed_at >= :start_date AND listings.listed_at <= :end_date ',
+                        { start_date: start_date, end_date: end_date})
+                  .group(:content).count
 
     @stats = {
       num_listings: @num_listings,
       num_discriminatory: @num_discriminatory,
       discriminatory_phrase_count: @discriminatory_phrase_count
     }
+    puts @stats
     @stats
   end
 end

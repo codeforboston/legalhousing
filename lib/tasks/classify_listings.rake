@@ -39,4 +39,37 @@ namespace :classify_listings do
       puts "#{@percent_array}"
   end
 
+  desc 'Check Discriminatory Listing Statistics'
+  task check_stats: :environment do
+
+    stats = Phrase.joins(:listings)
+                  .where('listings.listed_at >= :start_date AND listings.listed_at <= :end_date ',
+                        { start_date: '2010-01-01', end_date: '2020-01-01'})
+                  .group(:content).count
+    puts "Toal Listings: #{Listing.all.count}"
+    puts "Total Discriminatory: #{stats.values.reduce(:+)}"
+    puts "Discriminatory Breakdown: #{stats}"
+
+
+    # puts "Total Listings: #{Listing.all.count}"
+    # puts "Discriminatory: #{Listing.where(discriminatory: true).count}"
+    # breakdown = Listing.left_outer_joins(:phrases).where(listed_at: '2010-01-01'...'2020-01-01').group(:content).count
+    # puts breakdown
+    # puts breakdown.values.reduce(:+)
+    #
+    # i = 0
+    # Listing.where(discriminatory: true).each do |listing|
+    #   puts listing.phrases.count
+    #   listing.phrases.each do |phrase|
+    #     # i += 1
+    #     # puts i
+    #     # puts phrase.content
+    #   end
+    # end
+
+  end
+
+
+
+
 end
